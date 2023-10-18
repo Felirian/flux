@@ -1,0 +1,51 @@
+@import "variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+}
+
+html, body {
+  background-color: $color-bg-1;
+  height: 100%;
+}
+
+p,
+a,
+br,
+span,
+img,
+div,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea {
+  color: $color-text-1;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: inherit;
+  &:focus {
+
+  }
+  &:disabled {
+
+  }
+}
+a {
+  text-decoration: none;
+}
