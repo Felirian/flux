@@ -10,7 +10,7 @@ class MyDocument extends Document {
           <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
           <meta
             name="description"
-            content="Узнайте больше про обучение, трудоустройство и социализацию людей с инвалидностью в России"
+            content="Скоро здесь будет крутой сайт по продаже цифровых ключей стим"
           />
           <meta content="origin" id="mref" name="referrer"/>
           <link
