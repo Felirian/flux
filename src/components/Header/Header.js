@@ -4,16 +4,16 @@ const Header = () => {
   return (
     <div>
       <div className={'.Button'}>
-        <h1 className={'.Button'}>Header</h1>
+        <h1>Header</h1>
       </div>
       <div className={'.Button'}>
-        <h1 className={'.Button'}>Header</h1>
+        <h1>Header</h1>
       </div>
       <div className={'.Button'}>
-        <h1 className={'.Button'}>Header</h1>
+        <h1>Header</h1>
       </div>
       <div className={'.Button'}>
-        <h1 className={'.Button'}>Header</h1>
+        <h1>Header</h1>
       </div>
     </div>
   );
