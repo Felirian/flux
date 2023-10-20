@@ -6,4 +6,4 @@ services:
     container_name: setkalavka
     restart: unless-stopped
     ports:
-      - 3100:3000
+      - 3100:3001
