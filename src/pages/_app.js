@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import '../style/index.css'
+import '../style/index.sass'
 const _App = ({Component, pageProps}) => {
 
   useEffect(() => {
