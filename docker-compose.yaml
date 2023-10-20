@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  setkalavka:
+    image: felirian/flux:latest
+    container_name: setkalavka
+    restart: unless-stopped
+    ports:
+      - 3100:3000

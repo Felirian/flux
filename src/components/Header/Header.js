@@ -3,7 +3,18 @@ import React from 'react';
 const Header = () => {
   return (
     <div>
-      <h1>Header</h1>
+      <div className={'.Button'}>
+        <h1 className={'.Button'}>Header</h1>
+      </div>
+      <div className={'.Button'}>
+        <h1 className={'.Button'}>Header</h1>
+      </div>
+      <div className={'.Button'}>
+        <h1 className={'.Button'}>Header</h1>
+      </div>
+      <div className={'.Button'}>
+        <h1 className={'.Button'}>Header</h1>
+      </div>
     </div>
   );
 };
