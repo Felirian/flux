@@ -1,0 +1,29 @@
+@import "../../style/variables";
+
+.header_wrapper {
+  width: 40px;
+  overflow: visible;
+  @include xSmall {
+    width: 100%;
+    height: 40px;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    background-color: red;
+    overflow: hidden;
+    @include large {
+      position: absolute;
+    }
+    @include xSmall {
+      width: 100%;
+      height: 40px;
+    }
+    .open {
+      width: 180px;
+    }
+  }
+
+}

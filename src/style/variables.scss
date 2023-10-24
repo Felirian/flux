@@ -14,3 +14,38 @@ $color-accent-pink: #EA9CBF;
 $color-accent-green: #B0E298;
 
 //-----Fonts-----//
+@font-face {
+  font-family: 'Jost';
+  src: url("./fonts/Jost-VariableFont_wght.ttf");
+}
+@mixin Jost {
+  font-family: "Jost", sans-serif;
+}
+
+//---BrakePoints---\\
+
+$bp1600: 1600px;
+$bp1400: 1400px;
+$bp840: 840px;
+$bp480: 480px;
+
+@mixin extra-large {
+  @media (max-width: #{$bp1600}) {
+    @content;
+  }
+}
+@mixin large {
+  @media (max-width: #{$bp1400}) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (max-width: #{$bp840}) {
+    @content;
+  }
+}
+@mixin xSmall {
+  @media (max-width: #{$bp480}) {
+    @content;
+  }
+}

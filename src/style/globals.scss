@@ -4,15 +4,23 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  //border: 1px pink solid;
 }
-
-#root {
-  display: flex;
-}
-
 html, body {
   background-color: $color-bg-1;
   height: 100%;
+}
+
+#__next {
+  display: flex;
+  @include xSmall {
+    flex-direction: column;
+  }
+}
+
+main {
+  width: 100%;
+  background-color: $color-bg-2;
 }
 
 p,
@@ -46,6 +54,16 @@ button {
 
   }
 }
+
+//----- Text Tags ------\\
 a {
   text-decoration: none;
+}
+
+h1 {
+  @include Jost;
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 120%; /* 45.6px */
 }

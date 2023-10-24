@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import '../style/index.sass'
+import '../style/styles.scss'
 const _App = ({Component, pageProps}) => {
 
   useEffect(() => {
@@ -19,8 +19,11 @@ const _App = ({Component, pageProps}) => {
   return (
     <>
       <Header/>
-      <Component {...pageProps} />
-      <Footer/>
+      <main>
+        <Component {...pageProps} />
+        <Footer/>
+      </main>
+
     </>
   );
 };
