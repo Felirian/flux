@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import s from './header.module.scss'
+//import s from './header.module.scss'
 
 const Header = () => {
   const [open, setOpen] = useState(false)
   return (
-    <div className={s.header_wrapper}>
+    <div>
       <header
-        className={open ? s.open : ''}
         onClick={()=> setOpen(!open)}
       >
         <div className={'Button'}>
