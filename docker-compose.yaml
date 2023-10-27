@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  setkalavka:
+  flux:
     image: felirian/flux:latest
     container_name: setkalavka
     restart: unless-stopped
