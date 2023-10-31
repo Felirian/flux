@@ -3,7 +3,6 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import '../style/styles.scss'
 const _App = ({Component, pageProps}) => {
-
   useEffect(() => {
     let cards = document.querySelectorAll(".Button");
     document.addEventListener('mousemove', e => {
