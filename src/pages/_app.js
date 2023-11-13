@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import {authContext, adminContext, themeContext} from "@/components/Context";
+import {authContext, adminContext} from "@/components/Context";
 import '../style/styles.scss'
+
 const _App = ({Component, pageProps}) => {
+
   const [auth, setAuth] = useState(false)
   const [admin, setAdmin] = useState(false)
-  const [theme, setTheme] = useState('dark')
+  //const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
     let cards = document.querySelectorAll(".Button");
@@ -20,12 +22,13 @@ const _App = ({Component, pageProps}) => {
       }
     });
   }, []);
+
   return (
     <>
       <Header/>
       <main>
         <authContext.Provider value={[auth, setAuth]}>
-          <adminContext.Provider value={[auth, setAuth]}>
+          <adminContext.Provider value={[admin, setAdmin]}>
             <Component {...pageProps} />
             <Footer/>
           </adminContext.Provider>
