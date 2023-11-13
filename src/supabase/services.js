@@ -5,7 +5,7 @@ const supabase_key = process.env.NEXT_PUBLIC_DB_SERVICE_KEY
 const supabase_url = process.env.NEXT_PUBLIC_DB_URL
 const supabase = createClient(supabase_url, supabase_key);
 
-export const getItems = () => {
+export const GetItems = () => {
   const [Items, setItems] = useState(null)
   const [Error, setError] = useState(null)
   useEffect(() => {

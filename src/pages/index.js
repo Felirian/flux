@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from "next/head";
-import {getItems} from "@/supabase/services";
+import {GetItems} from "@/supabase/services";
 
 const Index = () => {
-  let Items = getItems();
+  let Items = GetItems();
 
   console.log(Items);
   return (
