@@ -3,6 +3,8 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import {authContext, adminContext} from "@/components/Context";
 import '../style/styles.scss'
+import {ApolloProvider} from "@apollo/client";
+import {client} from "@/supabase/services";
 
 const _App = ({Component, pageProps}) => {
 
@@ -29,8 +31,11 @@ const _App = ({Component, pageProps}) => {
       <main>
         <authContext.Provider value={[auth, setAuth]}>
           <adminContext.Provider value={[admin, setAdmin]}>
-            <Component {...pageProps} />
-            <Footer/>
+            <ApolloProvider client={client}>
+              <Component {...pageProps} />
+              <Footer/>
+            </ApolloProvider>
+
           </adminContext.Provider>
         </authContext.Provider>
       </main>
