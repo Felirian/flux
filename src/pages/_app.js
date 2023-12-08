@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import {authContext, adminContext} from "@/components/Context";
-import '../style/styles.scss'
+import '../style/button.scss'
+import {GlobalStyle, globalStyle} from "@/style/globals";
 import {ApolloProvider} from "@apollo/client";
 import {client} from "@/supabase/services";
 
@@ -27,6 +28,7 @@ const _App = ({Component, pageProps}) => {
 
   return (
     <>
+      <GlobalStyle/>
       <Header/>
       <main>
         <authContext.Provider value={[auth, setAuth]}>

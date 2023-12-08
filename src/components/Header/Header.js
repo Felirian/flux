@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {LiveBorder} from "@/style/styledComponents";
 //import s from './header.module.scss'
 
 const Header = () => {

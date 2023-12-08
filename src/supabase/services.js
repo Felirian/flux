@@ -38,18 +38,6 @@ export const GET_ITEMS = gql`
 `;
 
 
-// export const {loading, error, data} = graphql(`
-// query {
-//   itemsCollection {
-//     edges {
-//       node {
-//         name
-//       }
-//     }
-//   }
-// }
-// `)
-
 export const GetItems = () => {
   const [Items, setItems] = useState(null)
   const [Error, setError] = useState(null)
