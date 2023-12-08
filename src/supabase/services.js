@@ -9,30 +9,26 @@ const token = 'ezjvhnxqqokpnobxycpd'
 const supabase = createClient(supabase_url, supabase_key);
 
 export const client = new ApolloClient({
-  uri: supabase_url + '/graphql',
+  uri: supabase_url + '/graphql/v1',
 
   headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST",
-    "Access-Control-Expose-Headers": "Content-Length, X-JSON",
-    "Access-Control-Allow-Headers": "apikey,X-Client-Info, Content-Type, Authorization, Accept, Accept-Language, X-Authorization",
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
     apikey: supabase_key
   },
   cache: new InMemoryCache(),
   ssrMode: false,
 })
 
-
-
 export const GET_ITEMS = gql`
-  query {
+query {
   itemsCollection {
     edges {
       node {
         name
+        price
       }
-    }
+    }    
   }
 }
 `;
@@ -41,14 +37,15 @@ export const GET_ITEMS = gql`
 export const GetItems = () => {
   const [Items, setItems] = useState(null)
   const [Error, setError] = useState(null)
+
   useEffect(() => {
     const rest = async () => {
-      let { data: items, error } = await supabase
+      let { data: items, dataError } = await supabase
         .from('items')
         .select('*')
 
-      if (error) {
-        setError(error)
+      if (dataError) {
+        setError(dataError)
         setItems(null)
       }
       if (items) {

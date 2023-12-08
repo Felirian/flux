@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {LiveBorder} from "@/style/styledComponents";
-//import s from './header.module.scss'
+import {H1} from "@/style/styledComponents";
+
 
 const Header = () => {
   const [open, setOpen] = useState(false)
@@ -10,17 +10,17 @@ const Header = () => {
         onClick={()=> setOpen(!open)}
       >
         <div className={'Button'}>
-          <h1>Header</h1>
+          <H1>Header</H1>
         </div>
         <div className={'Button'}>
 
-          <h1>Header</h1>
+          <H1>Header</H1>
         </div>
         <div className={'Button'}>
-          <h1>Header</h1>
+          <H1>Header</H1>
         </div>
         <div className={'Button'}>
-          <h1>Header</h1>
+          <H1>Header</H1>
         </div>
       </header>
     </div>

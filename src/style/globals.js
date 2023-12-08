@@ -1,5 +1,15 @@
-import styled, {createGlobalStyle} from "styled-components";
+import styled, {createGlobalStyle, css} from "styled-components";
 import {color} from "@/style/variables";
+
+
+export const Jost = css`    
+    font-family: "Jost", sans-serif;
+    //color: red;
+`;
+export const OpenSans = css`    
+    font-family: "OpenSans", sans-serif;
+    //color: red;
+`;
 
 export const GlobalStyle = createGlobalStyle`
   * {
