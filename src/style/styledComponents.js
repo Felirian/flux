@@ -69,7 +69,11 @@ export const Caption = styled.h1 `
     font-weight: 400;
     line-height: 16px; /* 114.286% */
 `
+
+
+
 export const LiveBorder = styled.div `
+    
   @property --opacity {
     syntax: '<percentage>';
     initial-value: 0%;

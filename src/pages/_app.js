@@ -6,6 +6,7 @@ import '../style/button.scss'
 import {GlobalStyle, globalStyle} from "@/style/globals";
 import {ApolloProvider} from "@apollo/client";
 import {client} from "@/supabase/services";
+import {LiveBorder} from "@/style/styledComponents";
 
 const _App = ({Component, pageProps}) => {
 
@@ -14,6 +15,7 @@ const _App = ({Component, pageProps}) => {
   //const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
+    //let cards = document.getElementsByName(<LiveBorder/>)
     let cards = document.querySelectorAll(".Button");
     document.addEventListener('mousemove', e => {
       for (let i = 0; i < cards.length; i++) {
@@ -37,7 +39,6 @@ const _App = ({Component, pageProps}) => {
               <Component {...pageProps} />
               <Footer/>
             </ApolloProvider>
-
           </adminContext.Provider>
         </authContext.Provider>
       </main>
