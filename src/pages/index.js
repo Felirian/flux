@@ -1,9 +1,8 @@
 import React from 'react';
 import Head from "next/head";
 import {useQuery} from "@apollo/client";
-import {GET_ITEMS, GetItems} from "@/supabase/services";
+import {GET_ITEMS} from "@/supabase/services";
 import {H2, H3, T1, Title} from "@/style/styledComponents";
-import Image from "next/image";
 import {CardCol2} from "@/components/card_col_2/CardCol2";
 
 const Index = () => {

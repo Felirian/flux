@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;      
     //border: 1px pink solid;
   }
 
@@ -26,11 +26,12 @@ export const GlobalStyle = createGlobalStyle`
 
   #__next {
     display: flex;
-  @include xSmall {
-    flex-direction: column;
+      transition: 0.5s ease;
+    @include xSmall {
+      flex-direction: column;
+    }
   }
-  }
-
+    
   main {
     width: 100%;
     background-color: ${color.bg[0]};

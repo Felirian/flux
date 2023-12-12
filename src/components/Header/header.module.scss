@@ -1,0 +1,28 @@
+@import "src/style/variables.scss";
+
+.headerWrapper {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-shrink: 0;
+  transition: 0.5s ease;
+}
+.open {
+  width: 40px;
+}
+.close {
+  width: 180px;
+}
+
+.menuGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+
+  button {
+    padding: 10px;
+  }
+}

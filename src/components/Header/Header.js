@@ -1,81 +1,62 @@
 import React, {useState} from 'react';
-import {H1, H3, H4, LiveBorder} from "@/style/styledComponents";
+import {H1, H3, H4} from "@/style/styledComponents";
+import s from './header.module.scss'
+import cn from 'classnames'
 import styled from "styled-components";
+
 import SvgSelector from "@/components/SvgSelector";
+import {LiveBorders} from "@/components/LiveBorders";
 
-
-const Header = () => {
+export const Header = () => {
   const [open, setOpen] = useState(false)
 
-  const HeaderComponent = styled.header`
-      display: flex;      
-      height: 100vh;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-shrink: 0;
-      transition: 0.5s ease;     
-  `
-  const MenuGroup = styled.div `
-      display: flex;      
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 20px;
-      button {
-          padding: 10px;
-      }
-  `
-
   return (
-    <div>
-      <HeaderComponent>
-        <MenuGroup>
-          <button
-            className={'Button'}
-            onClick={()=>(setOpen(!open))}
-          >
-            <SvgSelector svg={'Burger'}/>
-          </button>
-        </MenuGroup>
-        <MenuGroup>
-          <LiveBorder>
-            <H3>Header</H3>
-          </LiveBorder>
-          <LiveBorder>
-            <H3>Header</H3>
-          </LiveBorder>
-          <div className={'Button'}>
-            <H3>Header</H3>
-          </div>
-          <div className={'Button'}>
-            <H3>Header</H3>
-          </div>
-        </MenuGroup>
+    <div className={cn(s.headerWrapper, open ? s.open : s.close)}>
 
-        <MenuGroup>
-          <div className={'Button'}>
-            <H3>Header</H3>
-          </div>
-          <div className={'Button'}>
-            <H3>Header</H3>
-          </div>
-        </MenuGroup>
+      <div className={s.menuGroup}>
+        <button
+          className={'Button'}
+          onClick={() => (setOpen(!open))}
+        >
+          <SvgSelector svg={'Burger'}/>
+        </button>
+      </div>
 
-        <MenuGroup>
-          <div className={'Button'}>
-            <H3>Header</H3>
-          </div>
-          <div className={'Button'}>
-            <H3>Header</H3>
-          </div>
-          <div className={'Button'}>
-            <H3>Header</H3>
-          </div>
-        </MenuGroup>
-      </HeaderComponent>
+      <div className={s.menuGroup}>
+        <LiveBorders>
+          <H3>Header</H3>
+        </LiveBorders>
+        <div>
+          <H3>Header</H3>
+        </div>
+        <div className={'Button'}>
+          <H3>Header</H3>
+        </div>
+        <div className={'Button'}>
+          <H3>Header</H3>
+        </div>
+      </div>
+
+      <div className={s.menuGroup}>
+        <div className={'Button'}>
+          <H3>Header</H3>
+        </div>
+        <div className={'Button'}>
+          <H3>Header</H3>
+        </div>
+      </div>
+
+      <div className={s.menuGroup}>
+        <div className={'Button'}>
+          <H3>Header</H3>
+        </div>
+        <div className={'Button'}>
+          <H3>Header</H3>
+        </div>
+        <div className={'Button'}>
+          <H3>Header</H3>
+        </div>
+      </div>
     </div>
   );
 };
-
-
-export default Header;
