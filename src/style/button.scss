@@ -8,6 +8,8 @@
 
 .Button {
   //position: relative;
+  width: fit-content;
+  height: fit-content;
 
   border-image: radial-gradient(120px circle at var(--mouse-x) var(--mouse-y), $color-bg-3, transparent 40%);
   border-image-width: 1px;

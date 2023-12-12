@@ -1,0 +1,13 @@
+@import "src/style/variables.scss";
+
+.card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+.tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

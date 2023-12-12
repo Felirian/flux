@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import s from './header.module.scss';
 import cn from 'classnames';
 import SvgSelector from "@/components/SvgSelector";
-import {LiveBorders} from "@/components/LiveBorders";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -20,9 +19,9 @@ export const Header = () => {
       </div>
 
       <div className={s.menuGroup}>
-        <LiveBorders>
+        <div className={'Button'}>
           <h3>Header</h3>
-        </LiveBorders>
+        </div>
         <div>
           <h3>Header</h3>
         </div>

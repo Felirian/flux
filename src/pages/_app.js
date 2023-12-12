@@ -14,28 +14,22 @@ const _App = ({Component, pageProps}) => {
   //const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
-    //let cards = document.getElementsByName(<LiveBorder/>)
-    document.addEventListener('mousemove', ev => {
-      setXMos(ev.x)
-      setYMos(ev.y)
-    })
-
-    // let cards = document.querySelectorAll(".Button");
-    // document.addEventListener('mousemove', e => {
-    //   for (let i = 0; i < cards.length; i++) {
-    //     const rect = cards[i].getBoundingClientRect(),
-    //       x = e.clientX - rect.left,
-    //       y = e.clientY - rect.top;
-    //     cards[i].style.setProperty("--mouse-x", `${x}px`);
-    //     cards[i].style.setProperty("--mouse-y", `${y}px`);
-    //   }
-    // });
+    let cards = document.querySelectorAll(".Button");
+    document.addEventListener('mousemove', e => {
+      for (let i = 0; i < cards.length; i++) {
+        const rect = cards[i].getBoundingClientRect(),
+          x = e.clientX - rect.left,
+          y = e.clientY - rect.top;
+        cards[i].style.setProperty("--mouse-x", `${x}px`);
+        cards[i].style.setProperty("--mouse-y", `${y}px`);
+      }
+    });
   }, []);
 
   return (
     <>
       <xMousePos.Provider value={[xMos, setXMos]}>
-        <yMousePos.Provider value={yMos}>
+        <yMousePos.Provider value={[yMos, setYMos]}>
 
           <authContext.Provider value={[auth, setAuth]}>
             <adminContext.Provider value={[admin, setAdmin]}>
