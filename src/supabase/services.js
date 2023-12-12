@@ -26,9 +26,19 @@ query {
     edges {
       node {
         name
+        slug
         price
+        accessoryCollection {
+          edges {
+            node {
+              tags {
+                name
+              }
+            }
+          }
+        }
       }
-    }    
+    }
   }
 }
 `;
