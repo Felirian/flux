@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from "next/image";
 import styled from "styled-components";
-import {Caption, H3} from "@/style/styledComponents";
+
 
 export const CardCol2 = ({slug, tags, price}) => {
   return (
@@ -15,10 +15,10 @@ export const CardCol2 = ({slug, tags, price}) => {
         />
         <Tags>
           {tags.map((el, i)=>(
-            <Caption key={`Caption_${i}`}>{el.node.tags.name}</Caption>
+            <p className={'caption'} key={`Caption_${i}`}>{el.node.tags.name}</p>
           ))}
         </Tags>
-        <H3>{price}</H3>
+        <h3>{price}</h3>
       </Card>
     </div>
 

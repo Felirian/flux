@@ -2,7 +2,6 @@ import React from 'react';
 import Head from "next/head";
 import {useQuery} from "@apollo/client";
 import {GET_ITEMS} from "@/supabase/services";
-import {H2, H3, T1, Title} from "@/style/styledComponents";
 import {CardCol2} from "@/components/card_col_2/CardCol2";
 
 const Index = () => {
@@ -14,11 +13,11 @@ const Index = () => {
       <Head>
         <title>FLUX</title>
       </Head>
-      <Title>Main Page</Title>
+      <div className={'title'}>Main Page</div>
       {loading ? (
-        <H3>Loading...</H3>
+        <h3>Loading...</h3>
       ) : error ? (
-        <H3>{error}</H3>
+        <h3>{error}</h3>
       ) : (
         data.itemsCollection.edges.map((el, i) => (
           <CardCol2

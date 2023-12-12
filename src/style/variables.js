@@ -1,5 +1,3 @@
-import {css} from "styled-components";
-
 export const color = {
   bg: [
     '#0D0D0D',
@@ -24,33 +22,3 @@ export const breakpoints = {
   bp840: 840,
   bp480: 480,
 }
-//-----Fonts-----//
-//
-// @font-face {
-//   font-family: 'Jost';
-//   src: url("./fonts/Jost-VariableFont_wght.ttf");
-// }
-// @mixin Jost {
-//   font-family: "Jost", sans-serif;
-// }
-//
-// @mixin extra-large {
-// @media (max-width: #{$bp1600}) {
-//   @content;
-//   }
-// }
-// @mixin large {
-// @media (max-width: #{$bp1400}) {
-//   @content;
-//   }
-// }
-// @mixin medium {
-// @media (max-width: #{$bp840}) {
-//   @content;
-//   }
-// }
-// @mixin xSmall {
-// @media (max-width: #{$bp480}) {
-//   @content;
-//   }
-// }

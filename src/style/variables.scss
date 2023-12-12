@@ -21,6 +21,13 @@ $color-accent-green: #B0E298;
 @mixin Jost {
   font-family: "Jost", sans-serif;
 }
+@font-face {
+  font-family: 'Open Sans';
+  src: url("./fonts/OpenSans-VariableFont_wdth,wght.ttf");
+}
+@mixin OpenSans {
+  font-family: "Open Sans", sans-serif;
+}
 
 //---BrakePoints---\\
 

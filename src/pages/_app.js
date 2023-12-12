@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Header} from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import {authContext, adminContext, xMousePos, yMousePos} from "@/components/Context";
-import '../style/button.scss'
-import {GlobalStyle} from "@/style/globals";
+import '../style/styles.scss'
 import {ApolloProvider} from "@apollo/client";
 import {client} from "@/supabase/services";
 
@@ -41,7 +40,6 @@ const _App = ({Component, pageProps}) => {
           <authContext.Provider value={[auth, setAuth]}>
             <adminContext.Provider value={[admin, setAdmin]}>
 
-              <GlobalStyle/>
               <Header/>
               <main>
                 <ApolloProvider client={client}>
