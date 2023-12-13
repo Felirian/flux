@@ -1,52 +1,54 @@
-import React, {useEffect, useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 import {Header} from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import {authContext, adminContext, xMousePos, yMousePos} from "@/components/Context";
+import {authContext, adminContext} from "@/components/Context";
 import '../style/styles.scss'
 import {ApolloProvider} from "@apollo/client";
 import {client} from "@/supabase/services";
 
+const CursorContext = createContext();
+
+export const useCursorContext = () => {
+  return useContext(CursorContext);
+};
+
 const _App = ({Component, pageProps}) => {
   const [auth, setAuth] = useState(false)
   const [admin, setAdmin] = useState(false)
-  const [xMos, setXMos] = useState()
-  const [yMos, setYMos] = useState()
-  //const [theme, setTheme] = useState('dark')
+
+  const [cursorPosition, setCursorPosition] = useState({x: 0, y: 0});
+
+  const updateCursorPosition = (e) => {
+    setCursorPosition({x: e.clientX, y: e.clientY});
+  };
 
   useEffect(() => {
-    let cards = document.querySelectorAll(".Button");
-    document.addEventListener('mousemove', e => {
-      for (let i = 0; i < cards.length; i++) {
-        const rect = cards[i].getBoundingClientRect(),
-          x = e.clientX - rect.left,
-          y = e.clientY - rect.top;
-        cards[i].style.setProperty("--mouse-x", `${x}px`);
-        cards[i].style.setProperty("--mouse-y", `${y}px`);
-      }
-    });
+    document.addEventListener('mousemove', updateCursorPosition);
+
+    return () => {
+      document.removeEventListener('mousemove', updateCursorPosition);
+    };
   }, []);
 
   return (
     <>
-      <xMousePos.Provider value={[xMos, setXMos]}>
-        <yMousePos.Provider value={[yMos, setYMos]}>
+      <CursorContext.Provider value={{cursorPosition}}>
+        <authContext.Provider value={[auth, setAuth]}>
+          <adminContext.Provider value={[admin, setAdmin]}>
 
-          <authContext.Provider value={[auth, setAuth]}>
-            <adminContext.Provider value={[admin, setAdmin]}>
+            <Header/>
+            <main>
+              <ApolloProvider client={client}>
+                <Component {...pageProps} />
+                <Footer/>
+              </ApolloProvider>
+            </main>
 
-              <Header/>
-              <main>
-                <ApolloProvider client={client}>
-                  <Component {...pageProps} />
-                  <Footer/>
-                </ApolloProvider>
-              </main>
+          </adminContext.Provider>
+        </authContext.Provider>
+      </CursorContext.Provider>
 
-            </adminContext.Provider>
-          </authContext.Provider>
 
-        </yMousePos.Provider>
-      </xMousePos.Provider>
     </>
   )
     ;

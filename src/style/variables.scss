@@ -12,11 +12,12 @@ $color-text-3: #0D0D0D;
 
 $color-accent-pink: #EA9CBF;
 $color-accent-green: #B0E298;
-
+$d: #ff0000;
 //-----Fonts-----//
 @font-face {
   font-family: 'Jost';
   src: url("./fonts/Jost-VariableFont_wght.ttf");
+
 }
 @mixin Jost {
   font-family: "Jost", sans-serif;

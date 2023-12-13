@@ -2,9 +2,10 @@ import React from 'react';
 import Image from "next/image";
 import s from './cardCol2.module.scss'
 import cn from 'classnames'
+import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
 export const CardCol2 = ({slug, tags, price}) => {
   return (
-    <div className={'Button'}>
+    <LiveBorders>
       <div className={s.card}>
         <Image
           src={`${process.env.NEXT_PUBLIC_DB_URL}/storage/v1/object/public/Images/items/${slug}/col_2_card_img.jpg`}
@@ -19,6 +20,6 @@ export const CardCol2 = ({slug, tags, price}) => {
         </div>
         <h3>{price}</h3>
       </div>
-    </div>
+    </LiveBorders>
   );
 };
