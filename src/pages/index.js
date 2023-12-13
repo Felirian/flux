@@ -6,8 +6,7 @@ import {CardCol2} from "@/components/card_col_2/CardCol2";
 
 const Index = () => {
   const {data, error, loading} = useQuery(GET_ITEMS)
-  //console.log('grph:\n');
-  //console.log(data?.itemsCollection.edges)
+
   return (
     <>
       <Head>

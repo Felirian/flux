@@ -15,19 +15,13 @@ export const useCursorContext = () => {
 const _App = ({Component, pageProps}) => {
   const [auth, setAuth] = useState(false)
   const [admin, setAdmin] = useState(false)
-
   const [cursorPosition, setCursorPosition] = useState({x: 0, y: 0});
-
   const updateCursorPosition = (e) => {
     setCursorPosition({x: e.clientX, y: e.clientY});
   };
-
   useEffect(() => {
     document.addEventListener('mousemove', updateCursorPosition);
 
-    return () => {
-      document.removeEventListener('mousemove', updateCursorPosition);
-    };
   }, []);
 
   return (

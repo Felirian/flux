@@ -1,9 +1,6 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import {color} from "@/style/variables";
-import {CursorContext} from "@/components/Context";
 import {useCursorContext} from "@/pages/_app";
-
-
 export const LiveBorders = ({children}) => {
 
   const ref = useRef(null)
@@ -22,7 +19,6 @@ export const LiveBorders = ({children}) => {
 
 
   const gradientStyle = {
-    //overflow: 'hidden',
     width: 'fit-content',
     height: 'fit-content',
 
@@ -30,7 +26,7 @@ export const LiveBorders = ({children}) => {
     borderImageWidth: '1px',
     borderImageSlice: '9',
 
-    background: `radial-gradient(circle at ${gradPos.x}px ${gradPos.y}px, rgba(50,50,50, ${opacity}), transparent  90%)`,
+    background: `radial-gradient(circle at ${gradPos.x}px ${gradPos.y}px, rgba(50,50,50, ${opacity}), transparent  100%)`,
     transition: '0.5s ease',
   };
   return (

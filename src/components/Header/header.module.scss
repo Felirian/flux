@@ -8,6 +8,7 @@
   align-items: flex-start;
   flex-shrink: 0;
   transition: 0.5s ease;
+  background-color: $color-bg-2;
 }
 .open {
   width: 40px;
@@ -20,9 +21,18 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
-
-  button {
+  //gap: 20px;
+  //button {
+  //  padding: 10px;
+  //}
+  a {
+    display: flex;
+    width: 180px;
     padding: 10px;
+    align-items: center;
+    gap: 10px;
+    svg {
+      width: 20px;
+    }
   }
 }

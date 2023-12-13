@@ -3,6 +3,8 @@ import s from './header.module.scss';
 import cn from 'classnames';
 import SvgSelector from "@/components/SvgSelector";
 import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
+import {HashLink} from "react-router-hash-link";
+import Link from "next/link";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -22,37 +24,64 @@ export const Header = () => {
 
       <div className={s.menuGroup}>
         <LiveBorders>
-          <h3>Header</h3>
+          <Link href={'/#a'}>
+            <SvgSelector svg={'Store'}/>
+            <h4>Магазин</h4>
+          </Link>
         </LiveBorders>
         <LiveBorders>
-          <h3>Header</h3>
+          <Link href={'/#a'}>
+            <SvgSelector svg={'Store'}/>
+            <h4>Магазин</h4>
+          </Link>
         </LiveBorders>
         <LiveBorders>
-          <h3>Header</h3>
+          <Link href={'/#a'}>
+            <SvgSelector svg={'Store'}/>
+            <h4>Магазин</h4>
+          </Link>
         </LiveBorders>
         <LiveBorders>
-          <h3>Header</h3>
+          <Link href={'/#a'}>
+            <SvgSelector svg={'Store'}/>
+            <h4>Магазин</h4>
+          </Link>
         </LiveBorders>
       </div>
 
       <div className={s.menuGroup}>
         <LiveBorders>
-          <h3>Header</h3>
+          <Link href={'/#a'}>
+            <SvgSelector svg={'Store'}/>
+            <h4>Магазин</h4>
+          </Link>
         </LiveBorders>
         <LiveBorders>
-          <h3>Header</h3>
+          <Link href={'/#a'}>
+            <SvgSelector svg={'Store'}/>
+            <h4>Магазин</h4>
+          </Link>
         </LiveBorders>
       </div>
 
       <div className={s.menuGroup}>
         <LiveBorders>
-          <h3>Header</h3>
+          <Link href={'/#a'}>
+            <SvgSelector svg={'Store'}/>
+            <h4>Магазин</h4>
+          </Link>
         </LiveBorders>
         <LiveBorders>
-          <h3>Header</h3>
+          <Link href={'/#a'}>
+            <SvgSelector svg={'Store'}/>
+            <h4>Магазин</h4>
+          </Link>
         </LiveBorders>
         <LiveBorders>
-          <h3>Header</h3>
+          <Link href={'/#a'}>
+            <SvgSelector svg={'Account'}/>
+            <h4>Войти</h4>
+          </Link>
         </LiveBorders>
       </div>
     </div>
