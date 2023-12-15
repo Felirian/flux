@@ -30,18 +30,35 @@ export const SignUp = () => {
       alert('Пароли не совпадают');
       return;
     }
+
+    const { data: existingUsers, error: existingUsersError } = await supabase
+      .from('users')
+      .select('id')
+      .eq('email', formData.email);
+
+    if (existingUsers) {
+      console.log(existingUsers);
+    }
+
     try {
-      let { data, error } = await supabase.auth.signUp({
+      // Регистрация нового пользователя
+      let { data: authData, error: authError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
+        options: {
+          data: {
+            name: formData.name,
+          },
+        },
       })
-      if (error) {
-        throw error;
+
+      if (authError) {
+        throw authError;
       }
 
-      console.log('Успешно добавлено в Supabase:', data);
+      console.log('Пользователь добавлен', authData);
     } catch (error) {
-      console.error('Ошибка при добавлении в Supabase:', error.message);
+      console.error('Ошибка при добавлении', error.message);
     }
 
   };

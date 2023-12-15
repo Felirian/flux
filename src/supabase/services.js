@@ -19,7 +19,9 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
   ssrMode: false,
 })
-
+export const GET_USER = async () =>{
+  const { data: { user } } = await supabase.auth.getUser()
+}
 export const GET_ITEMS = gql`
 query {
   itemsCollection {

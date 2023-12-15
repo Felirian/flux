@@ -17,9 +17,17 @@ export const Input = styled.input `
     border-bottom: 1px solid ${color.text[1]};
     outline: none;
     transition: 0.2s ease;
+    
     &:focus {
         border-bottom: 1px solid ${color.accent.pink};
     }
+    //&:-webkit-autofill {
+    //    appearance: none;
+    //    background-image: none !important;
+    //    background-color: red !important;
+    //    -webkit-box-shadow: 0 0 0 30px red inset !important;
+    //    color: red !important;
+    //}
     
 
 `
