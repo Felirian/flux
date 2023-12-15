@@ -42,35 +42,6 @@ query {
   }
 }
 `;
-
-
-export const GetItems = () => {
-  const [Items, setItems] = useState(null)
-  const [Error, setError] = useState(null)
-
-  useEffect(() => {
-    const rest = async () => {
-      let { data: items, dataError } = await supabase
-        .from('items')
-        .select('*')
-
-      if (dataError) {
-        setError(dataError)
-        setItems(null)
-      }
-      if (items) {
-        setItems(items)
-        setError(null)
-      }
-    }
-    rest()
-  }, [1]);
-  return {data: Items, error: Error}
-}
-
-
-
-
 export default supabase
 
 

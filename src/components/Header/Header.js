@@ -78,7 +78,7 @@ export const Header = () => {
           </Link>
         </LiveBorders>
         <LiveBorders>
-          <Link href={'/#a'}>
+          <Link href={'/auth'}>
             <SvgSelector svg={'Account'}/>
             <h4>Войти</h4>
           </Link>

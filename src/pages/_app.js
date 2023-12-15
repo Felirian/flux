@@ -34,7 +34,6 @@ const _App = ({Component, pageProps}) => {
             <main>
               <ApolloProvider client={client}>
                 <Component {...pageProps} />
-                <Footer/>
               </ApolloProvider>
             </main>
 
