@@ -7,10 +7,8 @@ import supabase from "@/supabase/services";
 
 export const LogIn = ({changeLogin}) => {
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     password: '',
-    confirmPassword: '',
   });
 
   const handleChange = (e) => {
@@ -24,11 +22,28 @@ export const LogIn = ({changeLogin}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    try {
+      let { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password
+      })
+
+      if (signInError) {
+        throw signInError
+      }
+      console.error('Осуществленн вход', signInData);
+    } catch (error) {
+      console.error('Ошибка при входе', error.message);
+    }
+
   };
   return (
     <AuthWrapper>
 
-      <LoginForm>
+      <LoginForm
+        onSubmit={handleSubmit}
+        id={'LoginForm'}
+      >
         <h1>ВХОД</h1>
 
         <LiveBorders width={'100%'}>
@@ -56,7 +71,7 @@ export const LogIn = ({changeLogin}) => {
         <ButtonChange onClick={()=> changeLogin()}>
           <p className={'t3'}>ЗАРЕГЕСТРИРОВАТЬСЯ</p>
         </ButtonChange>
-        <ButtonSubmit type={'submit'} form={'SignUpForm'}>
+        <ButtonSubmit type={'submit'} form={'LoginForm'}>
           <p className={'t3'}>ВОЙТИ</p>
         </ButtonSubmit>
 
