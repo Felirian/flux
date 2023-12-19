@@ -4,7 +4,7 @@ import Footer from "@/components/Footer/Footer";
 import {authContext, adminContext} from "@/components/Context";
 import '../style/styles.scss'
 import {ApolloProvider} from "@apollo/client";
-import {client} from "@/supabase/services";
+import supabase, {client, GET_USER} from "@/supabase/services";
 
 const CursorContext = createContext();
 
@@ -16,12 +16,16 @@ const _App = ({Component, pageProps}) => {
   const [auth, setAuth] = useState(false)
   const [admin, setAdmin] = useState(false)
   const [cursorPosition, setCursorPosition] = useState({x: 0, y: 0});
+
+
+
+// Вызов функции для проверки текущей сессии
+
   const updateCursorPosition = (e) => {
     setCursorPosition({x: e.clientX, y: e.clientY});
   };
   useEffect(() => {
     document.addEventListener('mousemove', updateCursorPosition);
-
   }, []);
 
   return (

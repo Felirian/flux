@@ -2,11 +2,10 @@ import React, {useState} from 'react';
 import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
 import styled from "styled-components";
 import {Input} from "@/style/StyledComponents";
-import {AuthWrapper} from "@/pages/auth";
-import {color} from "@/style/variables";
+import {AuthWrapper, ButtonChange, ButtonsGroups, ButtonSubmit} from "@/pages/auth";
 import supabase from "@/supabase/services";
 
-export const SignUp = () => {
+export const SignUp = ({changeLogin}) => {
 
   const [formData, setFormData] = useState({
     name: '',
@@ -109,16 +108,16 @@ export const SignUp = () => {
           />
         </LiveBorders>
       </LoginForm>
-      <ButtonsGroups>
 
-        <ButtonChange>
+      <ButtonsGroups>
+        <ButtonChange onClick={()=>changeLogin()}>
           <p className={'t3'}>ВОЙТИ</p>
         </ButtonChange>
         <ButtonSubmit type={'submit'} form={'SignUpForm'}>
           <p className={'t3'}>ЗАРЕГЕСТРИРОВАТЬСЯ</p>
         </ButtonSubmit>
-
       </ButtonsGroups>
+
     </AuthWrapper>
   );
 };
@@ -128,28 +127,4 @@ const LoginForm = styled.form`
     align-items: flex-start;
     gap: 20px;
     align-self: stretch;
-`
-const ButtonsGroups = styled.div`
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    p {
-        color: ${color.text[2]};
-    }
-`
-const ButtonChange = styled.button `
-    display: flex;
-    padding: 5px 10px;
-    justify-content: center;
-    align-items: center;
-    background-color: ${color.accent.pink};
-    
-`
-
-const ButtonSubmit = styled.button `
-    display: flex;
-    padding: 5px 10px;
-    justify-content: center;
-    align-items: center;
-    background-color: ${color.accent.green};
 `
