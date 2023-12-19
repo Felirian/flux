@@ -1,20 +1,38 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import styled from "styled-components";
 import {LogIn} from "@/components/LogIn";
 import {SignUp} from "@/components/SignUp";
 import {color} from "@/style/variables";
+import Head from "next/head";
+import {checkUserName} from "@/supabase/services";
+import {authContext} from "@/components/Context";
 
 const Auth = () => {
   const [login, setLogin] = useState(true)
-
+  const [auth, setAuth] = useContext(authContext)
+  const [username, setUsername] = useState(null);
   const changeLogin = () => {
     setLogin(!login)
   }
 
+  useEffect(() => {
+    if (auth) {
+      checkUserName()
+        .then(result => setUsername(result.toString()))
+        .catch(error => console.error('Ошибка:', error.message));
+    }
+  }, [auth]);
+
   return (
-    <AuthPage>
-      {login ? <LogIn changeLogin={changeLogin}/> : <SignUp changeLogin={changeLogin}/>}
-    </AuthPage>
+    <>
+      <Head>
+        <title>{username !== null ? username : 'Flux account'}</title>
+      </Head>
+      <AuthPage>
+        {login ? <LogIn changeLogin={changeLogin}/> : <SignUp changeLogin={changeLogin}/>}
+      </AuthPage>
+    </>
+
   );
 };
 

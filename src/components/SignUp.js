@@ -71,7 +71,7 @@ export const SignUp = ({changeLogin}) => {
         <h1>РЕГИСТРАЦИЯ</h1>
         <LiveBorders width={'100%'}>
           <Input
-            placeholder={'имя'}
+            placeholder={' имя'}
             pattern="^[A-Za-zА-Яа-яЁё\s\D]+$"
             type={"text"}
             name={"name"}
@@ -81,7 +81,7 @@ export const SignUp = ({changeLogin}) => {
         </LiveBorders>
         <LiveBorders width={'100%'}>
           <Input
-            placeholder={'почта'}
+            placeholder={' почта'}
             type={"email"}
             name={"email"}
             value={formData.email}
@@ -91,7 +91,7 @@ export const SignUp = ({changeLogin}) => {
         <h1>БЕЗОПАСНОСТЬ</h1>
         <LiveBorders width={'100%'}>
           <Input
-            placeholder={'пароль'}
+            placeholder={' пароль'}
             type={"password"}
             name={"password"}
             value={formData.password}
@@ -100,7 +100,7 @@ export const SignUp = ({changeLogin}) => {
         </LiveBorders>
         <LiveBorders width={'100%'}>
           <Input
-            placeholder={'повторите пароль'}
+            placeholder={' повторите пароль'}
             type={"password"}
             name={"confirmPassword"}
             value={formData.confirmPassword}

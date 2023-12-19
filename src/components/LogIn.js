@@ -51,7 +51,7 @@ export const LogIn = ({changeLogin}) => {
 
         <LiveBorders width={'100%'}>
           <Input
-            placeholder={'почта'}
+            placeholder={' почта'}
             type={"email"}
             name={"email"}
             value={formData.email}
@@ -60,7 +60,7 @@ export const LogIn = ({changeLogin}) => {
         </LiveBorders>
         <LiveBorders width={'100%'}>
           <Input
-            placeholder={'пароль'}
+            placeholder={' пароль'}
             type={"password"}
             name={"password"}
             value={formData.password}

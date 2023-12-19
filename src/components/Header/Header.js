@@ -93,7 +93,7 @@ export const Header = () => {
         <LiveBorders>
           <Link href={'/auth'}>
             <SvgSelector svg={'Account'}/>
-            <h4>{username !== null ? username : 'ВОЙТИ'}</h4>
+            <h4>{username !== null ? username : 'Войти'}</h4>
           </Link>
         </LiveBorders>
       </div>
