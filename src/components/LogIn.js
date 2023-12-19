@@ -1,11 +1,13 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Input} from "@/style/StyledComponents";
 import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
 import {AuthWrapper, ButtonChange, ButtonSubmit, ButtonsGroups} from "@/pages/auth";
 import styled from "styled-components";
 import supabase from "@/supabase/services";
+import {authContext} from "@/components/Context";
 
 export const LogIn = ({changeLogin}) => {
+  const [auth, setAuth] = useContext(authContext)
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -32,6 +34,7 @@ export const LogIn = ({changeLogin}) => {
         throw signInError
       }
       console.error('Осуществленн вход', signInData);
+      setAuth(true)
     } catch (error) {
       console.error('Ошибка при входе', error.message);
     }

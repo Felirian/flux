@@ -4,7 +4,7 @@ import Footer from "@/components/Footer/Footer";
 import {authContext, adminContext} from "@/components/Context";
 import '../style/styles.scss'
 import {ApolloProvider} from "@apollo/client";
-import supabase, {client, GET_USER} from "@/supabase/services";
+import supabase, {checkSession, client, GET_USER} from "@/supabase/services";
 
 const CursorContext = createContext();
 
@@ -13,7 +13,7 @@ export const useCursorContext = () => {
 };
 
 const _App = ({Component, pageProps}) => {
-  const [auth, setAuth] = useState(false)
+  const [auth, setAuth] = useState(checkSession() )
   const [admin, setAdmin] = useState(false)
   const [cursorPosition, setCursorPosition] = useState({x: 0, y: 0});
 

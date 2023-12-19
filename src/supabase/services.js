@@ -34,14 +34,36 @@ export const checkSession = async () => {
 
     if (session) {
       // Пользователь аутентифицирован, session содержит информацию о сессии
-      console.log('Текущая сессия:', session);
+      //console.log('Текущая сессия:', session);
+    } else {
+      // Пользователь не аутентифицирован
+      //console.log('Пользователь не аутентифицирован');
+    }
+  } catch (error) {
+    //console.error('Ошибка при проверке сессии:', error.message);
+  }
+};
+
+export const checkUserName = async () => {
+  let result
+  try {
+    const { data:session, error: sessionError } = await supabase.auth.getSession()
+
+    if (sessionError) {
+      throw sessionError;
+    }
+
+    if (session) {
+      // Пользователь аутентифицирован, session содержит информацию о сессии
+      result = String(session.session.user.user_metadata.name.toString())
     } else {
       // Пользователь не аутентифицирован
       console.log('Пользователь не аутентифицирован');
     }
   } catch (error) {
-    console.error('Ошибка при проверке сессии:', error.message);
+    console.error('Ошибка ', error.message);
   }
+  return result
 };
 
 export const GET_ITEMS = gql`
