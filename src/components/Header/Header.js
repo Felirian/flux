@@ -5,7 +5,7 @@ import SvgSelector from "@/components/SvgSelector";
 import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
 import Link from "next/link";
 import {authContext} from "@/components/Context";
-import {checkSession, checkUserName, GET_USER} from "@/supabase/services";
+import {checkUserName} from "@/supabase/services";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -31,7 +31,6 @@ export const Header = () => {
           </button>
         </div>
       </LiveBorders>
-
 
       <div className={s.menuGroup}>
         <LiveBorders>

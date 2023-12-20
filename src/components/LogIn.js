@@ -72,7 +72,7 @@ export const LogIn = ({changeLogin}) => {
       <ButtonsGroups>
 
         <ButtonChange onClick={()=> changeLogin()}>
-          <p className={'t3'}>ЗАРЕГЕСТРИРОВАТЬСЯ</p>
+          <p className={'t3'}>ЗАРЕГИСТРИРОВАТЬСЯ</p>
         </ButtonChange>
         <ButtonSubmit type={'submit'} form={'LoginForm'}>
           <p className={'t3'}>ВОЙТИ</p>

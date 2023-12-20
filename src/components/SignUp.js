@@ -114,7 +114,7 @@ export const SignUp = ({changeLogin}) => {
           <p className={'t3'}>ВОЙТИ</p>
         </ButtonChange>
         <ButtonSubmit type={'submit'} form={'SignUpForm'}>
-          <p className={'t3'}>ЗАРЕГЕСТРИРОВАТЬСЯ</p>
+          <p className={'t3'}>ЗАРЕГИСТРИРОВАТЬСЯ</p>
         </ButtonSubmit>
       </ButtonsGroups>
 

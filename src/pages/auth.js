@@ -32,7 +32,6 @@ const Auth = () => {
         {login ? <LogIn changeLogin={changeLogin}/> : <SignUp changeLogin={changeLogin}/>}
       </AuthPage>
     </>
-
   );
 };
 
