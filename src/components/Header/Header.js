@@ -3,11 +3,9 @@ import s from './header.module.scss';
 import cn from 'classnames';
 import SvgSelector from "@/components/SvgSelector";
 import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
-import {HashLink} from "react-router-hash-link";
 import Link from "next/link";
 import {authContext} from "@/components/Context";
 import {checkSession, checkUserName, GET_USER} from "@/supabase/services";
-import {log} from "next/dist/server/typescript/utils";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -37,42 +35,27 @@ export const Header = () => {
 
       <div className={s.menuGroup}>
         <LiveBorders>
-          <Link href={'/#a'} onClick={() => console.log(checkUserName())}>
+          <Link href={'/#main_game'} onClick={() => console.log(checkUserName())}>
             <SvgSelector svg={'Store'}/>
             <h4>Магазин</h4>
           </Link>
         </LiveBorders>
         <LiveBorders>
-          <Link href={'/#a'} >
-            <SvgSelector svg={'Store'}/>
-            <h4>Магазин</h4>
+          <Link href={'/#sale'} >
+            <SvgSelector svg={'Sale'}/>
+            <h4>Скидки</h4>
           </Link>
         </LiveBorders>
         <LiveBorders>
-          <Link href={'/#a'}>
-            <SvgSelector svg={'Store'}/>
-            <h4>Магазин</h4>
+          <Link href={'/#category_1'}>
+            <SvgSelector svg={'Categories'}/>
+            <h4>Категории</h4>
           </Link>
         </LiveBorders>
         <LiveBorders>
-          <Link href={'/#a'}>
-            <SvgSelector svg={'Store'}/>
-            <h4>Магазин</h4>
-          </Link>
-        </LiveBorders>
-      </div>
-
-      <div className={s.menuGroup}>
-        <LiveBorders>
-          <Link href={'/#a'}>
-            <SvgSelector svg={'Store'}/>
-            <h4>Магазин</h4>
-          </Link>
-        </LiveBorders>
-        <LiveBorders>
-          <Link href={'/#a'}>
-            <SvgSelector svg={'Store'}/>
-            <h4>Магазин</h4>
+          <Link href={'/#search'}>
+            <SvgSelector svg={'Search'}/>
+            <h4>Поиск</h4>
           </Link>
         </LiveBorders>
       </div>
@@ -80,14 +63,29 @@ export const Header = () => {
       <div className={s.menuGroup}>
         <LiveBorders>
           <Link href={'/#a'}>
-            <SvgSelector svg={'Store'}/>
-            <h4>Магазин</h4>
+            <SvgSelector svg={'News'}/>
+            <h4>Новости</h4>
           </Link>
         </LiveBorders>
         <LiveBorders>
           <Link href={'/#a'}>
-            <SvgSelector svg={'Store'}/>
-            <h4>Магазин</h4>
+            <SvgSelector svg={'Refill'}/>
+            <h4>Пополнение</h4>
+          </Link>
+        </LiveBorders>
+      </div>
+
+      <div className={s.menuGroup}>
+        <LiveBorders>
+          <Link href={'/#a'}>
+            <SvgSelector svg={'Settings'}/>
+            <h4>Настройки</h4>
+          </Link>
+        </LiveBorders>
+        <LiveBorders>
+          <Link href={'/#a'}>
+            <SvgSelector svg={'Basket'}/>
+            <h4>Корзина</h4>
           </Link>
         </LiveBorders>
         <LiveBorders>
