@@ -66,6 +66,20 @@ export const checkUserName = async () => {
   return result
 };
 
+export const FIND_USER = gql`
+query ($slug: String) {  
+  accountsCollection (filter: {
+    slug: { eq: $slug }
+  }) {
+    edges {
+      node {
+        slug
+      }
+    }
+  }
+}
+`
+
 export const GET_ITEMS = gql`
 query {
   itemsCollection {

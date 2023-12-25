@@ -3,16 +3,31 @@ import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
 import styled from "styled-components";
 import {Input} from "@/style/StyledComponents";
 import {AuthWrapper, ButtonChange, ButtonsGroups, ButtonSubmit} from "@/pages/auth";
-import supabase from "@/supabase/services";
+import supabase, {FIND_USER} from "@/supabase/services";
+import {Router} from "next/router";
+import {useQuery} from "@apollo/client";
+import {router} from "next/client";
 
 export const SignUp = ({changeLogin}) => {
-
   const [formData, setFormData] = useState({
     name: '',
+    slug: '',
     email: '',
     password: '',
     confirmPassword: '',
   });
+  // const findUser = () => {
+  //   const {data, loading, error} = useQuery(FIND_USER, {
+  //     variables: {slug: formData.slug}
+  //   })
+  //   if (data) {
+  //     return data
+  //   } else {
+  //     return error
+  //   }
+  //
+  // }
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,23 +35,32 @@ export const SignUp = ({changeLogin}) => {
       ...prevData,
       [name]: value,
     }));
+    // if (findUser) {
+    //   console.log(formData.slug)
+    //   console.log(findUser)
+    // }
   };
+
+  const redirect = () => {
+    router.push('/terms/verification');
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (formData.password !== formData.confirmPassword) {
-      alert('Пароли не совпадают');
-      return;
-    }
 
     const { data: existingUsers, error: existingUsersError } = await supabase
       .from('users')
       .select('id')
       .eq('email', formData.email);
 
-    if (existingUsers) {
-      console.log(existingUsers);
+    if (formData.password !== formData.confirmPassword) {
+      alert('Пароли не совпадают');
+      return;
+    }
+
+    if (existingUsers?.length !== 0) {
+     alert('пользователь существует');
+      return;
     }
 
     try {
@@ -47,19 +71,17 @@ export const SignUp = ({changeLogin}) => {
         options: {
           data: {
             name: formData.name,
+            slug: formData.slug,
           },
         },
       })
-
       if (authError) {
         throw authError;
       }
-
-      console.log('Пользователь добавлен', authData);
+      router.push('/terms/verification');
     } catch (error) {
-      console.error('Ошибка при добавлении', error.message);
+      alert('Ошибка при добавлении', error.message);
     }
-
   };
 
   return (
@@ -77,6 +99,18 @@ export const SignUp = ({changeLogin}) => {
             name={"name"}
             value={formData.name}
             onChange={handleChange}
+            required={true}
+          />
+        </LiveBorders>
+        <LiveBorders width={'100%'}>
+          <Input
+            placeholder={' уникальное имя пользователя'}
+            pattern="^[a-z\s\D]+$"
+            type={"text"}
+            name={"slug"}
+            value={formData.slug}
+            onChange={handleChange}
+            required={true}
           />
         </LiveBorders>
         <LiveBorders width={'100%'}>
@@ -86,6 +120,7 @@ export const SignUp = ({changeLogin}) => {
             name={"email"}
             value={formData.email}
             onChange={handleChange}
+            required={true}
           />
         </LiveBorders>
         <h1>БЕЗОПАСНОСТЬ</h1>
@@ -96,6 +131,7 @@ export const SignUp = ({changeLogin}) => {
             name={"password"}
             value={formData.password}
             onChange={handleChange}
+            required={true}
           />
         </LiveBorders>
         <LiveBorders width={'100%'}>
@@ -105,6 +141,7 @@ export const SignUp = ({changeLogin}) => {
             name={"confirmPassword"}
             value={formData.confirmPassword}
             onChange={handleChange}
+            required={true}
           />
         </LiveBorders>
       </LoginForm>
