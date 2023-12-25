@@ -5,6 +5,7 @@ import {AuthWrapper, ButtonChange, ButtonSubmit, ButtonsGroups} from "@/pages/au
 import styled from "styled-components";
 import supabase from "@/supabase/services";
 import {authContext} from "@/components/Context";
+import {router} from "next/client";
 
 export const LogIn = ({changeLogin}) => {
   const [auth, setAuth] = useContext(authContext)
@@ -33,7 +34,7 @@ export const LogIn = ({changeLogin}) => {
       if (signInError) {
         throw signInError
       }
-      console.error('Осуществленн вход', signInData);
+      router.push(`/account/felirian`);
       setAuth(true)
     } catch (error) {
       console.error('Ошибка при входе', error.message);

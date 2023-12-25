@@ -30,7 +30,7 @@ export const SignUp = ({changeLogin}) => {
 
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -48,7 +48,7 @@ export const SignUp = ({changeLogin}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { data: existingUsers, error: existingUsersError } = await supabase
+    const {data: existingUsers, error: existingUsersError} = await supabase
       .from('users')
       .select('id')
       .eq('email', formData.email);
@@ -58,14 +58,14 @@ export const SignUp = ({changeLogin}) => {
       return;
     }
 
-    if (existingUsers?.length !== 0) {
-     alert('пользователь существует');
-      return;
-    }
+    // if (existingUsers?.length !== 0) {
+    //   alert('пользователь существует');
+    //   return;
+    // }
 
     try {
       // Регистрация нового пользователя
-      let { data: authData, error: authError } = await supabase.auth.signUp({
+      let {data: authData, error: authError} = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
@@ -147,7 +147,7 @@ export const SignUp = ({changeLogin}) => {
       </LoginForm>
 
       <ButtonsGroups>
-        <ButtonChange onClick={()=>changeLogin()}>
+        <ButtonChange onClick={() => changeLogin()}>
           <p className={'t3'}>ВОЙТИ</p>
         </ButtonChange>
         <ButtonSubmit type={'submit'} form={'SignUpForm'}>
