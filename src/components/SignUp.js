@@ -4,11 +4,12 @@ import styled from "styled-components";
 import {Input} from "@/style/StyledComponents";
 import {AuthWrapper, ButtonChange, ButtonsGroups, ButtonSubmit} from "@/pages/auth";
 import supabase, {FIND_USER} from "@/supabase/services";
-import {Router} from "next/router";
+import {useRouter} from "next/router";
 import {useQuery} from "@apollo/client";
-import {router} from "next/client";
+
 
 export const SignUp = ({changeLogin}) => {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     name: '',
     slug: '',
@@ -41,9 +42,7 @@ export const SignUp = ({changeLogin}) => {
     // }
   };
 
-  const redirect = () => {
-    router.push('/terms/verification');
-  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

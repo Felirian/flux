@@ -5,9 +5,11 @@ import {AuthWrapper, ButtonChange, ButtonSubmit, ButtonsGroups} from "@/pages/au
 import styled from "styled-components";
 import supabase from "@/supabase/services";
 import {authContext} from "@/components/Context";
-import {router} from "next/client";
+import {useRouter} from "next/router";
+
 
 export const LogIn = ({changeLogin}) => {
+  const router = useRouter()
   const [auth, setAuth] = useContext(authContext)
   const [formData, setFormData] = useState({
     email: '',
