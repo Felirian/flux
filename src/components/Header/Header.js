@@ -21,7 +21,7 @@ export const Header = () => {
   }, [auth]);
 
   return (
-    <div className={cn(s.headerWrapper, open ? s.open : s.close)}>
+    <div className={cn(s.headerWrapper, !open ? s.open : s.close)}>
       <LiveBorders>
         <div className={s.menuGroup}>
           <button

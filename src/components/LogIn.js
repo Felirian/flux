@@ -7,7 +7,6 @@ import supabase from "@/supabase/services";
 import {authContext} from "@/components/Context";
 import {useRouter} from "next/router";
 
-
 export const LogIn = ({changeLogin}) => {
   const router = useRouter()
   const [auth, setAuth] = useContext(authContext)

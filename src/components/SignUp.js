@@ -3,10 +3,8 @@ import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
 import styled from "styled-components";
 import {Input} from "@/style/StyledComponents";
 import {AuthWrapper, ButtonChange, ButtonsGroups, ButtonSubmit} from "@/pages/auth";
-import supabase, {FIND_USER} from "@/supabase/services";
+import supabase from "@/supabase/services";
 import {useRouter} from "next/router";
-import {useQuery} from "@apollo/client";
-
 
 export const SignUp = ({changeLogin}) => {
   const router = useRouter()
@@ -28,8 +26,6 @@ export const SignUp = ({changeLogin}) => {
   //   }
   //
   // }
-
-
   const handleChange = (e) => {
     const {name, value} = e.target;
     setFormData((prevData) => ({
@@ -41,9 +37,6 @@ export const SignUp = ({changeLogin}) => {
     //   console.log(findUser)
     // }
   };
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -56,12 +49,10 @@ export const SignUp = ({changeLogin}) => {
       alert('Пароли не совпадают');
       return;
     }
-
     // if (existingUsers?.length !== 0) {
     //   alert('пользователь существует');
     //   return;
     // }
-
     try {
       // Регистрация нового пользователя
       let {data: authData, error: authError} = await supabase.auth.signUp({

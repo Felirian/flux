@@ -80,6 +80,31 @@ query ($slug: String) {
 }
 `
 
+export const GET_ITEM = gql`
+query ($slug: String) {  
+  itemsCollection (filter: {
+    slug: { eq: $slug }
+  }) {
+    edges {
+      node {
+        name
+        slug
+        price
+        accessoryCollection {
+          edges {
+            node {
+              tags {
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
+
 export const GET_ITEMS = gql`
 query {
   itemsCollection {
