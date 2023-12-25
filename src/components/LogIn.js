@@ -34,7 +34,10 @@ export const LogIn = ({changeLogin}) => {
       if (signInError) {
         throw signInError
       }
-      router.push(`/account/felirian`);
+      if (typeof window !== 'undefined') {
+        router.push(`/account/felirian`);
+      }
+
       setAuth(true)
     } catch (error) {
       console.error('Ошибка при входе', error.message);

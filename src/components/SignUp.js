@@ -78,7 +78,9 @@ export const SignUp = ({changeLogin}) => {
       if (authError) {
         throw authError;
       }
-      router.push('/terms/verification');
+      if (typeof window !== 'undefined') {
+        router.push('/terms/verification');
+      }
     } catch (error) {
       alert('Ошибка при добавлении', error.message);
     }
