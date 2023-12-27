@@ -1,11 +1,17 @@
 {
   "headers": [
     {
-      "source": "/(.*)",
-      "headers": [
+      "source": "/",
+      "has": [
         {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
+          "type": "host",
+          "value": "example.com"
+        }
+      ],
+      "headers" : [
+        {
+          "key" : "X-Robots-Tag",
+          "value" : "noindex"
         }
       ]
     }
