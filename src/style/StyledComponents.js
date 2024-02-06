@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {color} from "@/style/variables";
+import {COLOR} from "@/style/variables";
 
 export const Input = styled.input `
     display: flex;
@@ -13,12 +13,12 @@ export const Input = styled.input `
     background-color: rgba(0,0,0,0);
     
     border: none;    
-    border-bottom: 1px solid ${color.text[1]};
+    border-bottom: 1px solid ${COLOR.text[1]};
     outline: none;
     transition: 0.2s ease;
     
     &:focus {
-        border-bottom: 1px solid ${color.accent.pink};
+        border-bottom: 1px solid ${COLOR.accent.pink};
     }
     //&:-webkit-autofill {
     //    appearance: none;

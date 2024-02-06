@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
-import {color} from "@/style/variables";
+import {COLOR} from "@/style/variables";
 import {useCursorContext} from "@/pages/_app";
 export const LiveBorders = ({children, width, height}) => {
 
@@ -22,7 +22,7 @@ export const LiveBorders = ({children, width, height}) => {
     width: width ? width : 'fit-content',
     height: height ? height : 'fit-content',
 
-    borderImageSource: `radial-gradient(circle at ${gradPos.x}px ${gradPos.y}px, ${color.text[0]}, transparent  50%)`,
+    borderImageSource: `radial-gradient(circle at ${gradPos.x}px ${gradPos.y}px, ${COLOR.text[0]}, transparent  50%)`,
     borderImageWidth: '1px',
     borderImageSlice: '9',
 

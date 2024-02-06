@@ -1,63 +1,64 @@
 @import "variables";
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  //border: 1px pink solid;
-}
-html, body {
-  background-color: $color-bg-1;
-  height: 100%;
-}
-
-#__next {
-  display: flex;
-  @include xSmall {
-    flex-direction: column;
-  }
-}
-
-main {
-  width: 100%;
-  background-color: $color-bg-1;
-}
-
-p,
-a,
-br,
-span,
-img,
-div,
-ul,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-input,
-textarea {
-  color: $color-text-1;
-}
-
-button {
-  cursor: pointer;
-  outline: none;
-  border: none;
-  background: transparent;
-  color: inherit;
-  &:focus {
-
-  }
-  &:disabled {
-
-  }
-}
+//
+//* {
+//  margin: 0;
+//  padding: 0;
+//  box-sizing: border-box;
+//  //border: 1px pink solid;
+//}
+//html, body {
+//  background-color: $color-bg-1;
+//  height: 100%;
+//}
+//
+//#__next {
+//  display: flex;
+//  @include xSmall {
+//    flex-direction: column;
+//  }
+//}
+//
+//main {
+//  width: 100%;
+//  background-color: $color-bg-1;
+//}
+//
+//p,
+//a,
+//br,
+//span,
+//img,
+//div,
+//ul,
+//h1,
+//h2,
+//h3,
+//h4,
+//h5,
+//h6,
+//input,
+//textarea {
+//  color: $color-text-1;
+//}
+//
+//button {
+//  cursor: pointer;
+//  outline: none;
+//  border: none;
+//  background: transparent;
+//  color: inherit;
+//  &:focus {
+//
+//  }
+//  &:disabled {
+//
+//  }
+//}
 
 //----- Text Tags ------\\
 a {
   text-decoration: none;
+  color: inherit;
 }
 .title {
   @include Jost;

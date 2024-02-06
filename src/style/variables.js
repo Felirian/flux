@@ -1,4 +1,4 @@
-export const color = {
+export const COLOR = {
   bg: [
     '#0D0D0D',
     '#1B1B1B',
@@ -16,9 +16,16 @@ export const color = {
     green: '#B0E298'
   }
 }
-export const breakpoints = {
-  bp1600: 1600,
-  bp1400: 1400,
-  bp840: 840,
-  bp480: 480,
+const breakpoints = {
+  bp1600: '1600px',
+  bp1400: '1400px',
+  bp840: '840px',
+  bp480: '480px',
 }
+
+export const BREAKPOINTS = {
+  laptop: `(max-width: ${breakpoints.bp1600})`,
+  tablet: `(max-width: ${breakpoints.bp1400})`,
+  mobile: `(max-width: ${breakpoints.bp840})`,
+  smallMobile: `(max-width: ${breakpoints.bp480})`,
+};

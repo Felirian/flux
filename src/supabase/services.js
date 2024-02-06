@@ -1,5 +1,4 @@
-import { createClient, } from '@supabase/supabase-js'
-import {useEffect, useState} from "react";
+import { createClient, } from '@supabase/supabase-js';
 import {ApolloClient, InMemoryCache} from "@apollo/client";
 import {gql} from "@apollo/client";
 
@@ -37,10 +36,10 @@ export const checkSession = async () => {
       //console.log('Текущая сессия:', session);
     } else {
       // Пользователь не аутентифицирован
-      //console.log('Пользователь не аутентифицирован');
+      console.log('Пользователь не аутентифицирован');
     }
   } catch (error) {
-    //console.error('Ошибка при проверке сессии:', error.message);
+    console.error('Ошибка при проверке сессии:', error.message);
   }
 };
 

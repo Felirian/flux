@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import styled from "styled-components";
 import {LogIn} from "@/components/LogIn";
 import {SignUp} from "@/components/SignUp";
-import {color} from "@/style/variables";
+import {COLOR} from "@/style/variables";
 import Head from "next/head";
 import {checkUserName} from "@/supabase/services";
 import {authContext} from "@/shared/Context";
@@ -40,7 +40,7 @@ export const ButtonsGroups = styled.div`
     width: 100%;
     justify-content: space-between;
     p {
-        color: ${color.text[2]};
+        color: ${COLOR.text[2]};
     }
 `
 export const ButtonChange = styled.button `
@@ -48,14 +48,14 @@ export const ButtonChange = styled.button `
     padding: 5px 10px;
     justify-content: center;
     align-items: center;
-    background-color: ${color.accent.pink};    
+    background-color: ${COLOR.accent.pink};    
 `
 export const ButtonSubmit = styled.button `
     display: flex;
     padding: 5px 10px;
     justify-content: center;
     align-items: center;
-    background-color: ${color.accent.green};
+    background-color: ${COLOR.accent.green};
 `
 const AuthPage = styled.div`
     background: radial-gradient(51.07% 65.98% at 51.07% 3.75%, rgba(152, 152, 152, 0.20) 0%, rgba(140, 140, 140, 0.00) 100%), #0D0D0D;

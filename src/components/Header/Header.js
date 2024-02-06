@@ -6,11 +6,16 @@ import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
 import Link from "next/link";
 import {authContext} from "@/shared/Context";
 import {checkUserName} from "@/supabase/services";
+import styled from "styled-components";
+import {BREAKPOINTS, COLOR} from "@/style/variables";
+import {useMediaQuery} from "@mui/material";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
   const [auth, setAuth] = useContext(authContext)
   const [username, setUsername] = useState(null);
+
+  const laptop = useMediaQuery(BREAKPOINTS.mobile);
 
   useEffect(() => {
     if (auth) {
@@ -20,8 +25,30 @@ export const Header = () => {
     }
   }, [auth]);
 
+  const HEADER_LINKS = [
+    ['/',[
+      {ref: '#main-slider', name: 'Магазин', svg: 'Store'},
+      {ref: '#sale', name: 'Скидки', svg: 'Sale'},
+      {ref: '#category-1', name: 'Категории', svg: 'Categories'},
+      {ref: '#search', name: 'Поиск', svg: 'Search'},
+    ]],
+    ['',[
+      {ref: '/news', name: 'Новости', svg: 'News'},
+      {ref: '/refill', name: 'Пополнение', svg: 'Refill'}
+    ]],
+    ['/account',[
+      {ref: '/settings', name: 'Настройки', svg: 'Settings'},
+      {ref: `/basket`, name: 'Корзина', svg: 'Basket'},
+      {
+        ref: `${username !== null ? '/f' : '/auth'}`,
+        name: `${username !== null ? username : 'Войти'}`,
+        svg: 'Account'
+      }],
+    ],
+  ]
+
   return (
-    <div className={cn(s.headerWrapper, !open ? s.open : s.close)}>
+    <HeaderWrapper open={open}>
       <LiveBorders>
         <div className={s.menuGroup}>
           <button
@@ -32,68 +59,73 @@ export const Header = () => {
         </div>
       </LiveBorders>
 
-      <div className={s.menuGroup}>
-        <LiveBorders>
-          <Link href={'/#main_game'} onClick={() => console.log(checkUserName())}>
-            <SvgSelector svg={'Store'}/>
-            <h4>Магазин</h4>
-          </Link>
-        </LiveBorders>
-        <LiveBorders>
-          <Link href={'/#sale'} >
-            <SvgSelector svg={'Sale'}/>
-            <h4>Скидки</h4>
-          </Link>
-        </LiveBorders>
-        <LiveBorders>
-          <Link href={'/#category_1'}>
-            <SvgSelector svg={'Categories'}/>
-            <h4>Категории</h4>
-          </Link>
-        </LiveBorders>
-        <LiveBorders>
-          <Link href={'/#search'}>
-            <SvgSelector svg={'Search'}/>
-            <h4>Поиск</h4>
-          </Link>
-        </LiveBorders>
-      </div>
+      {HEADER_LINKS.map((group, index)=> (
+        <MenuGroup>
+          {group[1].map((link, i)=>(
+            <LiveBorders>
+              <Link href={group[0] + link.ref}>
+                <SvgSelector svg={link.svg}/>
+                <h4>{link.name}</h4>
+              </Link>
 
-      <div className={s.menuGroup}>
-        <LiveBorders>
-          <Link href={'/#a'}>
-            <SvgSelector svg={'News'}/>
-            <h4>Новости</h4>
-          </Link>
-        </LiveBorders>
-        <LiveBorders>
-          <Link href={'/#a'}>
-            <SvgSelector svg={'Refill'}/>
-            <h4>Пополнение</h4>
-          </Link>
-        </LiveBorders>
-      </div>
+            </LiveBorders>
+          ))}
+        </MenuGroup>
+      ))}
 
-      <div className={s.menuGroup}>
-        <LiveBorders>
-          <Link href={'/#a'}>
-            <SvgSelector svg={'Settings'}/>
-            <h4>Настройки</h4>
-          </Link>
-        </LiveBorders>
-        <LiveBorders>
-          <Link href={'/#a'}>
-            <SvgSelector svg={'Basket'}/>
-            <h4>Корзина</h4>
-          </Link>
-        </LiveBorders>
-        <LiveBorders>
-          <Link href={username !== null ? '/account/f' : '/auth'}>
-            <SvgSelector svg={'Account'}/>
-            <h4>{username !== null ? username : 'Войти'}</h4>
-          </Link>
-        </LiveBorders>
-      </div>
-    </div>
+    </HeaderWrapper>
   );
 };
+
+const HeaderWrapper = styled.header`
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-shrink: 0;
+  transition: 0.5s ease;
+  background-color: ${COLOR.bg[1]};
+  
+  overflow: hidden;
+  
+  width: ${(props)=> props.open ? '40px' : '180px'};
+
+  @media ${BREAKPOINTS.tablet} {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  @media ${BREAKPOINTS.mobile} {
+    width: 100%;
+    flex-direction: row;
+    height: ${(props)=> props.open ? '40px' : '180px'};
+    overflow-y: hidden;
+  }
+  @media ${BREAKPOINTS.smallMobile} {
+    
+  }
+`
+
+const MenuGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  
+  a {
+    display: flex;
+    width: 180px;
+    //padding: 10px;
+    align-items: center;
+    gap: 10px;
+    svg {
+      width: 40px;
+    }
+    @media ${BREAKPOINTS.mobile} {
+      width: fit-content;
+      h4 {display: none}
+    }
+  }
+  @media ${BREAKPOINTS.mobile} {
+    
+  }
+`
