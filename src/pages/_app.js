@@ -1,10 +1,10 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import {Header} from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import {authContext, adminContext} from "@/components/Context";
+import {authContext, adminContext} from "@/shared/Context";
 import '../style/styles.scss'
 import {ApolloProvider} from "@apollo/client";
-import supabase, {checkSession, client, GET_USER} from "@/supabase/services";
+import {checkSession, client, GET_USER} from "@/supabase/services";
 
 const CursorContext = createContext();
 
@@ -13,14 +13,12 @@ export const useCursorContext = () => {
 };
 
 const _App = ({Component, pageProps}) => {
-  const [auth, setAuth] = useState(checkSession() )
+  const [auth, setAuth] = useState(checkSession())
   const [admin, setAdmin] = useState(false)
   const [cursorPosition, setCursorPosition] = useState({x: 0, y: 0});
 
 
-
-// Вызов функции для проверки текущей сессии
-
+  // позиция курсора для живых границ
   const updateCursorPosition = (e) => {
     setCursorPosition({x: e.clientX, y: e.clientY});
   };
@@ -44,8 +42,6 @@ const _App = ({Component, pageProps}) => {
           </adminContext.Provider>
         </authContext.Provider>
       </CursorContext.Provider>
-
-
     </>
   )
     ;

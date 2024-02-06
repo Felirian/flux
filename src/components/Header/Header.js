@@ -4,7 +4,7 @@ import cn from 'classnames';
 import SvgSelector from "@/components/SvgSelector";
 import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
 import Link from "next/link";
-import {authContext} from "@/components/Context";
+import {authContext} from "@/shared/Context";
 import {checkUserName} from "@/supabase/services";
 
 export const Header = () => {

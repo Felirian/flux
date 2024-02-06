@@ -5,7 +5,7 @@ import {SignUp} from "@/components/SignUp";
 import {color} from "@/style/variables";
 import Head from "next/head";
 import {checkUserName} from "@/supabase/services";
-import {authContext} from "@/components/Context";
+import {authContext} from "@/shared/Context";
 
 const Auth = () => {
   const [login, setLogin] = useState(true)

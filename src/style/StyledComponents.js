@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {color} from "@/style/variables";
 
-
 export const Input = styled.input `
     display: flex;
     width: 100%;

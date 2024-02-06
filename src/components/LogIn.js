@@ -4,7 +4,7 @@ import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
 import {AuthWrapper, ButtonChange, ButtonSubmit, ButtonsGroups} from "@/pages/auth";
 import styled from "styled-components";
 import supabase from "@/supabase/services";
-import {authContext} from "@/components/Context";
+import {authContext} from "@/shared/Context";
 import {useRouter} from "next/router";
 
 export const LogIn = ({changeLogin}) => {
@@ -22,6 +22,7 @@ export const LogIn = ({changeLogin}) => {
       [name]: value,
     }));
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
