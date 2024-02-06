@@ -3,7 +3,7 @@ version: '3.7'
 services:
   flux:
     image: felirian/flux:latest
-    container_name: setkalavka
+    container_name: flux
     restart: unless-stopped
     ports:
       - 3100:3001
