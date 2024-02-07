@@ -1,6 +1,4 @@
 import React, {useContext, useEffect, useState} from 'react';
-import s from './header.module.scss';
-import cn from 'classnames';
 import SvgSelector from "@/components/SvgSelector";
 import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
 import Link from "next/link";
@@ -46,17 +44,16 @@ export const Header = () => {
       }],
     ],
   ]
-
   return (
     <HeaderWrapper open={open}>
       <LiveBorders>
-        <div className={s.menuGroup}>
+        <MenuGroup>
           <button
             onClick={() => (setOpen(!open))}
           >
             <SvgSelector svg={'Burger'}/>
           </button>
-        </div>
+        </MenuGroup>
       </LiveBorders>
 
       {HEADER_LINKS.map((group, index) => (

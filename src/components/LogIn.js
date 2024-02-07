@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {Input} from "@/style/StyledComponents";
 import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
-import {AuthWrapper, ButtonChange, ButtonSubmit, ButtonsGroups} from "@/pages/auth";
+import {AuthWrapper, ButtonChange, ButtonSubmit, ButtonsGroups} from "@/pages/account/auth";
 import styled from "styled-components";
 import supabase from "@/supabase/services";
 import {authContext} from "@/shared/Context";

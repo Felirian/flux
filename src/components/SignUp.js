@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
 import styled from "styled-components";
 import {Input} from "@/style/StyledComponents";
-import {AuthWrapper, ButtonChange, ButtonsGroups, ButtonSubmit} from "@/pages/auth";
+import {AuthWrapper, ButtonChange, ButtonsGroups, ButtonSubmit} from "@/pages/account/auth";
 import supabase from "@/supabase/services";
 import {useRouter} from "next/router";
 

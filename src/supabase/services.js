@@ -24,6 +24,7 @@ export const GET_USER = async () => {
 }
 
 export const checkSession = async () => {
+  let loginUser = null
   try {
     const { data:session, error: sessionError } = await supabase.auth.getSession()
 
@@ -32,8 +33,7 @@ export const checkSession = async () => {
     }
 
     if (session) {
-      // Пользователь аутентифицирован, session содержит информацию о сессии
-      //console.log('Текущая сессия:', session);
+      loginUser = session.session.user.user_metadata
     } else {
       // Пользователь не аутентифицирован
       console.log('Пользователь не аутентифицирован');
@@ -41,6 +41,7 @@ export const checkSession = async () => {
   } catch (error) {
     console.error('Ошибка при проверке сессии:', error.message);
   }
+  return loginUser;
 };
 
 export const checkUserName = async () => {

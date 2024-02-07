@@ -1,5 +1,5 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
-import {Header} from "@/components/Header/Header";
+import {Header} from "@/components/Header";
 import Footer from "@/components/Footer/Footer";
 import {authContext, adminContext} from "@/shared/Context";
 import '../style/styles.scss'
