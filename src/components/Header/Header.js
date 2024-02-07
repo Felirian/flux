@@ -59,10 +59,10 @@ export const Header = () => {
         </div>
       </LiveBorders>
 
-      {HEADER_LINKS.map((group, index)=> (
-        <MenuGroup>
+      {HEADER_LINKS.map((group, index) => (
+        <MenuGroup key={index}>
           {group[1].map((link, i)=>(
-            <LiveBorders>
+            <LiveBorders key={i}>
               <Link href={group[0] + link.ref}>
                 <SvgSelector svg={link.svg}/>
                 <h4>{link.name}</h4>
