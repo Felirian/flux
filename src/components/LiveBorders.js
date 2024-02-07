@@ -17,7 +17,6 @@ export const LiveBorders = ({children, width, height}) => {
     setGradPos({x, y});
   }, [mosPos]);
 
-
   const gradientStyle = {
     width: width ? width : 'fit-content',
     height: height ? height : 'fit-content',

@@ -33,14 +33,20 @@ class MyDocument extends Document {
           <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
           <meta
             name="description"
-            content="Скоро здесь будет крутой сайт по продаже цифровых ключей стим"
+            content="Интернет-магазин по продаже цифровых ключей Steam"
           />
           <meta content="origin" id="mref" name="referrer"/>
           <link
             href="https://unpkg.com/aos@2.3.1/dist/aos.css"
             rel="stylesheet"
           />
-
+          {/*-----------------------------------------------шрифты-----------------------------------------------*/}
+          <link rel="preconnect" href="https://fonts.googleapis.com"/>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin/>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Open+Sans:wght@300;400;600&display=swap"
+            rel="stylesheet"/>
+          {/*-----------------------------------------------иконки-----------------------------------------------*/}
           <meta name="msapplication-TileColor" content="#2b5797"/>
           <meta name="theme-color" content="#000000"/>
           <link
@@ -57,8 +63,8 @@ class MyDocument extends Document {
         </Head>
 
         <body>
-          <Main/>
-          <NextScript/>
+        <Main/>
+        <NextScript/>
         </body>
       </Html>
     );

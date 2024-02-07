@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
+import {LiveBorders} from "@/components/LiveBorders";
 import styled from "styled-components";
 import {Input} from "@/style/StyledComponents";
 import {AuthWrapper, ButtonChange, ButtonsGroups, ButtonSubmit} from "@/pages/account/auth";

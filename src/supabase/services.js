@@ -18,10 +18,6 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
   ssrMode: false,
 })
-export const GET_USER = async () => {
-  const { data, error } = await supabase.auth.getSession()
-  return data;
-}
 
 export const checkSession = async () => {
   let loginUser = null
@@ -33,7 +29,7 @@ export const checkSession = async () => {
     }
 
     if (session) {
-      loginUser = session.session.user.user_metadata
+      loginUser = session.session.user
     } else {
       // Пользователь не аутентифицирован
       console.log('Пользователь не аутентифицирован');
@@ -66,14 +62,18 @@ export const checkUserName = async () => {
   return result
 };
 
-export const FIND_USER = gql`
+export const GET_ACCOUNT = gql`
 query ($slug: String) {  
   accountsCollection (filter: {
-    slug: { eq: $slug }
+    slug: {eq: "felirian"}
   }) {
     edges {
       node {
+        id
+        name
         slug
+        email
+        experience
       }
     }
   }
@@ -104,7 +104,6 @@ query ($slug: String) {
   }
 }
 `
-
 export const GET_ITEMS = gql`
 query {
   itemsCollection {

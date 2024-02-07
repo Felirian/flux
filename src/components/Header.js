@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import SvgSelector from "@/components/SvgSelector";
-import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
+import {LiveBorders} from "@/components/LiveBorders";
 import Link from "next/link";
 import {authContext} from "@/shared/Context";
 import {checkUserName} from "@/supabase/services";

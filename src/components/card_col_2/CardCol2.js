@@ -2,7 +2,7 @@ import React from 'react';
 import Image from "next/image";
 import s from './cardCol2.module.scss'
 import cn from 'classnames'
-import {LiveBorders} from "@/components/LiveBorders/LiveBorders";
+import {LiveBorders} from "@/components/LiveBorders";
 import Link from "next/link";
 export const CardCol2 = ({slug, tags, price}) => {
   return (
