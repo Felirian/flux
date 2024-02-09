@@ -3,24 +3,26 @@ import SvgSelector from "@/components/SvgSelector";
 import {LiveBorders} from "@/components/LiveBorders";
 import Link from "next/link";
 import {authContext} from "@/shared/Context";
-import {checkUserName} from "@/supabase/services";
 import styled from "styled-components";
 import {BREAKPOINTS, COLOR} from "@/style/variables";
 import {useMediaQuery} from "@mui/material";
+import {H4} from "@/style/TextTags";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
   const [auth, setAuth] = useContext(authContext)
-  const [username, setUsername] = useState(null);
+  const [userData, setUserData] = useState(null);
 
   const laptop = useMediaQuery(BREAKPOINTS.mobile);
 
   useEffect(() => {
-    if (auth) {
-      checkUserName()
-        .then(result => setUsername(result.toString()))
-        .catch(error => console.error('Ошибка:', error.message));
+    if (auth && typeof auth === 'function') {
+      console.log(auth);
+      auth
+        .then(loginUser => setUserData(loginUser))
+        .catch(error => console.error('Ошибка:', error.message))
     }
+    //console.log(userData?.user_metadata.slug);
   }, [auth]);
 
   const HEADER_LINKS = [
@@ -38,8 +40,8 @@ export const Header = () => {
       {ref: '/settings', name: 'Настройки', svg: 'Settings'},
       {ref: `/basket`, name: 'Корзина', svg: 'Basket'},
       {
-        ref: `${username !== null ? '/f' : '/auth'}`,
-        name: `${username !== null ? username : 'Войти'}`,
+        ref: `${userData?.user_metadata.slug ? `/${userData?.user_metadata.slug}` : '/auth'}`,
+        name: `${userData?.user_metadata.name ? userData?.user_metadata.name : 'Войти'}`,
         svg: 'Account'
       }],
     ],
@@ -62,7 +64,7 @@ export const Header = () => {
             <LiveBorders key={i}>
               <Link href={group[0] + link.ref}>
                 <SvgSelector svg={link.svg}/>
-                <h4>{link.name}</h4>
+                <H4>{link.name}</H4>
               </Link>
 
             </LiveBorders>

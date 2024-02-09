@@ -2,12 +2,13 @@ import React, {useContext, useEffect, useState} from 'react';
 import {useRouter} from "next/router";
 import Head from "next/head";
 import {authContext} from "@/shared/Context";
-import {H1, H4, Title} from "@/style/TextTags";
+import {H1, H4, T3, Title} from "@/style/TextTags";
 import GroupTitle from "@/components/GroupTitle";
 import styled from "styled-components";
 import {useQuery} from "@apollo/client";
-import {GET_ACCOUNT} from "@/supabase/services";
+import {GET_ACCOUNT, logOut} from "@/supabase/services";
 import {COLOR} from "@/style/variables";
+import {LiveBorders} from "@/components/LiveBorders";
 
 const Account = () => {
   const router = useRouter();
@@ -19,15 +20,15 @@ const Account = () => {
   const {data, loading, error} = useQuery(GET_ACCOUNT, {
     variables: {slug: id}
   })
+  //--надо настроить вход
 
-  console.log(data?.accountsCollection.edges[0].node.slug);
+  //console.log(data?.accountsCollection.edges[0].node.slug);
   useEffect(() => {
-    if (auth) {
+    if (auth && typeof auth === 'function') {
       auth
         .then(loginUser => setUserData(loginUser))
         .catch(error => console.error('Ошибка:', error.message))
     }
-
   }, [auth]);
 
   return (
@@ -55,12 +56,17 @@ const Account = () => {
         ) : (
           <>
             <Left>
-
+              <LiveBorders>
+                <button onClick={()=> logOut()}>
+                  <T3>ВЫЙТИ</T3>
+                </button>
+              </LiveBorders>
             </Left>
             <Right>
               <H1>{data.accountsCollection.edges[0].node.name}</H1>
               <H4 style={{color: COLOR.text[1]}}>@{data.accountsCollection.edges[0].node.slug}</H4>
             </Right>
+
           </>
 
         )}

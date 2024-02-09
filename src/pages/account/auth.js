@@ -15,14 +15,6 @@ const Auth = () => {
     setLogin(!login)
   }
 
-  useEffect(() => {
-    if (auth) {
-      checkUserName()
-        .then(result => setUsername(result.toString()))
-        .catch(error => console.error('Ошибка:', error.message));
-    }
-  }, [auth]);
-
   return (
     <>
       <Head>

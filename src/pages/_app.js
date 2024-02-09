@@ -1,8 +1,8 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import {Header} from "@/components/Header";
-import Footer from "@/components/Footer/Footer";
+import Footer from "@/components/Footer";
 import {authContext, adminContext} from "@/shared/Context";
-import '../style/styles.scss'
+//import '../style/styles.scss'
 import {ApolloProvider} from "@apollo/client";
 import {checkSession, client} from "@/supabase/services";
 import styled, {createGlobalStyle} from "styled-components";
@@ -44,7 +44,6 @@ const _App = ({Component, pageProps}) => {
                 </ApolloProvider>
               </MainWrapper>
             </Display>
-
 
           </adminContext.Provider>
         </authContext.Provider>

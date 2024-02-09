@@ -5,6 +5,7 @@ import {Input} from "@/style/StyledComponents";
 import {AuthWrapper, ButtonChange, ButtonsGroups, ButtonSubmit} from "@/pages/account/auth";
 import supabase from "@/supabase/services";
 import {useRouter} from "next/router";
+import {H1} from "@/style/TextTags";
 
 export const SignUp = ({changeLogin}) => {
   const router = useRouter()
@@ -82,7 +83,7 @@ export const SignUp = ({changeLogin}) => {
         onSubmit={handleSubmit}
         id={'SignUpForm'}
       >
-        <h1>РЕГИСТРАЦИЯ</h1>
+        <H1>РЕГИСТРАЦИЯ</H1>
         <LiveBorders width={'100%'}>
           <Input
             placeholder={' имя'}
@@ -115,7 +116,7 @@ export const SignUp = ({changeLogin}) => {
             required={true}
           />
         </LiveBorders>
-        <h1>БЕЗОПАСНОСТЬ</h1>
+        <H1>БЕЗОПАСНОСТЬ</H1>
         <LiveBorders width={'100%'}>
           <Input
             placeholder={' пароль'}

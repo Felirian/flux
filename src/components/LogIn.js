@@ -6,6 +6,7 @@ import styled from "styled-components";
 import supabase from "@/supabase/services";
 import {authContext} from "@/shared/Context";
 import {useRouter} from "next/router";
+import {H1} from "@/style/TextTags";
 
 export const LogIn = ({changeLogin}) => {
   const router = useRouter()
@@ -53,7 +54,7 @@ export const LogIn = ({changeLogin}) => {
         onSubmit={handleSubmit}
         id={'LoginForm'}
       >
-        <h1>ВХОД</h1>
+        <H1>ВХОД</H1>
 
         <LiveBorders width={'100%'}>
           <Input

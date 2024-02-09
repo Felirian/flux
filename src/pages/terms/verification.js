@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from "next/head";
+import {H2} from "@/style/TextTags";
 
 const Verification = () => {
 
@@ -9,7 +10,7 @@ const Verification = () => {
         <title>Flux - verification</title>
       </Head>
       <div>
-        <h1>Вам на почту отправлено письмо со ссылкой для подтверждения аккаунта</h1>
+        <H2>Вам на почту отправлено письмо со ссылкой для подтверждения аккаунта</H2>
       </div>
     </>
 

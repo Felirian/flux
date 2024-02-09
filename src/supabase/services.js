@@ -19,6 +19,7 @@ export const client = new ApolloClient({
   ssrMode: false,
 })
 
+
 export const checkSession = async () => {
   let loginUser = null
   try {
@@ -39,7 +40,6 @@ export const checkSession = async () => {
   }
   return loginUser;
 };
-
 export const checkUserName = async () => {
   let result
   try {
@@ -61,7 +61,17 @@ export const checkUserName = async () => {
   }
   return result
 };
+export const logOut = async  () => {
+  let { error } = await supabase.auth.signOut()
+  if (!error) {
+    window.location.href = '/';
+  } else {
+    console.log(error);
+    return error;
+  }
+}
 
+//-------------------------------GRAPHQL-------------------------------\\
 export const GET_ACCOUNT = gql`
 query ($slug: String) {  
   accountsCollection (filter: {
@@ -78,8 +88,7 @@ query ($slug: String) {
     }
   }
 }
-`
-
+`;
 export const GET_ITEM = gql`
 query ($slug: String) {  
   itemsCollection (filter: {
@@ -103,7 +112,7 @@ query ($slug: String) {
     }
   }
 }
-`
+`;
 export const GET_ITEMS = gql`
 query {
   itemsCollection {
