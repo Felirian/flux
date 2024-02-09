@@ -16,11 +16,13 @@ export const CardCol2 = ({slug, tags, price}) => {
           width={228}
           height={135}
         />
-        <Tags>
-          {tags.map((el, i) => (
-            <Caption key={`Caption_${i}`}>{el.node.tags.name}</Caption>
-          ))}
-        </Tags>
+        {tags &&
+          <Tags>
+            {tags.map((el, i) => (
+              <Caption key={`Caption_${i}`}>{el.node.tags.name}</Caption>
+            ))}
+          </Tags>
+        }
         <H3>{price}</H3>
       </Card>
     </LiveBorders>

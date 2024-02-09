@@ -1,12 +1,12 @@
-import { createClient, } from '@supabase/supabase-js';
+import {createClient,} from '@supabase/supabase-js';
 import {ApolloClient, InMemoryCache} from "@apollo/client";
 import {gql} from "@apollo/client";
 
 const supabase_key = process.env.NEXT_PUBLIC_DB_SERVICE_KEY
 const supabase_url = process.env.NEXT_PUBLIC_DB_URL
-const token = 'ezjvhnxqqokpnobxycpd'
 const supabase = createClient(supabase_url, supabase_key);
 
+//--------------------------------FETCH--------------------------------\\
 export const client = new ApolloClient({
   uri: supabase_url + '/graphql/v1',
 
@@ -18,12 +18,10 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
   ssrMode: false,
 })
-
-
 export const checkSession = async () => {
   let loginUser = null
   try {
-    const { data:session, error: sessionError } = await supabase.auth.getSession()
+    const {data: session, error: sessionError} = await supabase.auth.getSession()
 
     if (sessionError) {
       throw sessionError;
@@ -40,29 +38,8 @@ export const checkSession = async () => {
   }
   return loginUser;
 };
-export const checkUserName = async () => {
-  let result
-  try {
-    const { data:session, error: sessionError } = await supabase.auth.getSession()
-
-    if (sessionError) {
-      throw sessionError;
-    }
-
-    if (session) {
-      // Пользователь аутентифицирован, session содержит информацию о сессии
-      result = String(session.session.user.user_metadata.name.toString())
-    } else {
-      // Пользователь не аутентифицирован
-      console.log('Пользователь не аутентифицирован');
-    }
-  } catch (error) {
-    console.error('Ошибка ', error.message);
-  }
-  return result
-};
-export const logOut = async  () => {
-  let { error } = await supabase.auth.signOut()
+export const logOut = async () => {
+  let {error} = await supabase.auth.signOut()
   if (!error) {
     window.location.href = '/';
   } else {
@@ -135,6 +112,21 @@ query {
   }
 }
 `;
+
+//-------------------------------IMAGES-------------------------------\\
+export const accountAvatar = (slug) => {
+  let result
+
+  const {data: image} = supabase
+    .storage
+    .from('Images')
+    .getPublicUrl(`accounts/${slug}`)
+
+  if (image) {
+    result = image.publicUrl
+  }
+  return result
+}
 export default supabase
 
 

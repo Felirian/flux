@@ -9,6 +9,8 @@ const nextConfig = {
     domains: [
       "localhost",
     ],
+    // loader: 'custom',
+    // loaderFile: './supabase-image-loader.js',
   },
 }
 module.exports = nextConfig

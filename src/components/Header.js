@@ -7,6 +7,7 @@ import styled from "styled-components";
 import {BREAKPOINTS, COLOR} from "@/style/variables";
 import {useMediaQuery} from "@mui/material";
 import {H4} from "@/style/TextTags";
+import {checkSession} from "@/supabase/services";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -16,9 +17,8 @@ export const Header = () => {
   const laptop = useMediaQuery(BREAKPOINTS.mobile);
 
   useEffect(() => {
-    if (auth && typeof auth === 'function') {
-      console.log(auth);
-      auth
+    if (auth) {
+      checkSession()
         .then(loginUser => setUserData(loginUser))
         .catch(error => console.error('Ошибка:', error.message))
     }
@@ -40,8 +40,8 @@ export const Header = () => {
       {ref: '/settings', name: 'Настройки', svg: 'Settings'},
       {ref: `/basket`, name: 'Корзина', svg: 'Basket'},
       {
-        ref: `${userData?.user_metadata.slug ? `/${userData?.user_metadata.slug}` : '/auth'}`,
-        name: `${userData?.user_metadata.name ? userData?.user_metadata.name : 'Войти'}`,
+        ref: `${userData ? `/${userData?.user_metadata.slug}` : '/auth'}`,
+        name: `${userData ? userData?.user_metadata.name : 'Войти'}`,
         svg: 'Account'
       }],
     ],

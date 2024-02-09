@@ -6,9 +6,10 @@ import {H1, H4, T3, Title} from "@/style/TextTags";
 import GroupTitle from "@/components/GroupTitle";
 import styled from "styled-components";
 import {useQuery} from "@apollo/client";
-import {GET_ACCOUNT, logOut} from "@/supabase/services";
+import {accountAvatar, checkSession, GET_ACCOUNT, logOut} from "@/supabase/services";
 import {COLOR} from "@/style/variables";
 import {LiveBorders} from "@/components/LiveBorders";
+import Image from "next/image";
 
 const Account = () => {
   const router = useRouter();
@@ -20,12 +21,12 @@ const Account = () => {
   const {data, loading, error} = useQuery(GET_ACCOUNT, {
     variables: {slug: id}
   })
-  //--надо настроить вход
 
-  //console.log(data?.accountsCollection.edges[0].node.slug);
+  console.log(accountAvatar('felirian'))
+
   useEffect(() => {
-    if (auth && typeof auth === 'function') {
-      auth
+    if (auth) {
+      checkSession()
         .then(loginUser => setUserData(loginUser))
         .catch(error => console.error('Ошибка:', error.message))
     }
@@ -36,8 +37,8 @@ const Account = () => {
       <Head>
         <title>
           {data
-            ? `Account | ${data.accountsCollection.edges[0].node.slug}`
-            : "Account"
+            ? `Flux | Account | @${data.accountsCollection.edges[0].node.slug}`
+            : "Flux | Account | Loading..."
           }</title>
       </Head>
 
@@ -67,6 +68,10 @@ const Account = () => {
               <H4 style={{color: COLOR.text[1]}}>@{data.accountsCollection.edges[0].node.slug}</H4>
             </Right>
 
+            <Avatar
+              src={accountAvatar(data?.accountsCollection.edges[0].node.slug)}
+              alt={'avatar'}
+            />
           </>
 
         )}
@@ -86,6 +91,11 @@ const Left = styled.div`
 `
 const Right = styled.div`
 
+`
+
+const Avatar = styled.img`
+  width: 228px;
+  height: 228px;
 `
 
 export default Account;
