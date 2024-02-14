@@ -32,10 +32,10 @@ const Item = () => {
           </>
         ) : (
           <>
-            <H1>{itemData.name}</H1>
-            {itemData.accessoryCollection.edges.map((el,i)=> {
-              <T1 className={'t3'} key={`game_tag_${i}`}>{el.node.tags.name}</T1>
-            })}
+            <H1>{itemData?.name}</H1>
+            {itemData?.accessoryCollection.edges.map((el,i)=> (
+              <T1 key={`game_tag_${i}`}>{el.node.tags.name}</T1>
+            ))}
           </>
         )
       }

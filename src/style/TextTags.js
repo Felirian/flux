@@ -56,6 +56,13 @@ export const T3 = styled.p`
   font-weight: 400;
   line-height: 16px; /* 114.286% */
 `
+export const T4 = styled.p`
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px; /* 114.286% */
+`
 export const Caption = styled.caption`
   font-family: 'Open Sans', sans-serif;
   font-size: 10px;

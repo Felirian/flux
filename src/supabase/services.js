@@ -25,7 +25,7 @@ export const checkSession = async () => {
     const {data: session, error: sessionError} = await supabase.auth.getSession()
 
     if (sessionError) {
-      throw sessionError;
+      return sessionError;
     }
 
     if (session) {
@@ -39,7 +39,6 @@ export const checkSession = async () => {
   }
   return loginUser;
 };
-
 export const logOut = async () => {
   let {error} = await supabase.auth.signOut()
   if (!error) {
@@ -49,7 +48,6 @@ export const logOut = async () => {
     return error;
   }
 }
-
 export const addItemInBasket = async (item, account) => {
   if (item && account) {
     let { data, error } = await supabase
@@ -66,7 +64,7 @@ export const addItemInBasket = async (item, account) => {
 export const GET_ACCOUNT = gql`
 query ($slug: String) {  
   accountsCollection (filter: {
-    slug: {eq: "felirian"}
+    slug: {eq: $slug}
   }) {
     edges {
       node {

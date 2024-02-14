@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {useRouter} from "next/router";
-import Head from "next/head";
 import {authContext} from "@/shared/Context";
 import {H1, H4, T3, Title} from "@/style/TextTags";
 import GroupTitle from "@/components/GroupTitle";
@@ -10,6 +9,8 @@ import {accountAvatar, checkSession, GET_ACCOUNT, logOut} from "@/supabase/servi
 import {COLOR} from "@/style/variables";
 import {LiveBorders} from "@/components/LiveBorders";
 import Image from "next/image";
+import Head from "next/head";
+import AccountHead from "@/components/account/AccountHead";
 
 const Account = () => {
   const router = useRouter();
@@ -22,7 +23,7 @@ const Account = () => {
     variables: {slug: id}
   })
 
-  console.log(accountAvatar('felirian'))
+  // console.log(accountAvatar('felirian'))
 
   useEffect(() => {
     if (auth) {
@@ -37,15 +38,16 @@ const Account = () => {
       <Head>
         <title>
           {data
-            ? `Flux | Account | @${data.accountsCollection.edges[0].node.slug}`
+            ? `Flux | Account | @${id}`
             : "Flux | Account | Loading..."
-          }</title>
+          }
+        </title>
       </Head>
 
       <AccountWrapper>
-        <GroupTitle>
-          <Title>Аккаунт</Title>
-        </GroupTitle>
+        {/*<GroupTitle>*/}
+        {/*  <Title>Аккаунт</Title>*/}
+        {/*</GroupTitle>*/}
         {loading ? (
           <>
             <H1>Loading...</H1>
@@ -56,24 +58,30 @@ const Account = () => {
           </>
         ) : (
           <>
-            <Left>
-              <LiveBorders>
-                <button onClick={()=> logOut()}>
-                  <T3>ВЫЙТИ</T3>
-                </button>
-              </LiveBorders>
-            </Left>
-            <Right>
-              <H1>{data.accountsCollection.edges[0].node.name}</H1>
-              <H4 style={{color: COLOR.text[1]}}>
-                @{data.accountsCollection.edges[0].node.slug}
-              </H4>
-            </Right>
-
-            <Avatar
-              src={accountAvatar(data?.accountsCollection.edges[0].node.slug)}
-              alt={'avatar'}
+            <AccountHead
+              img={accountAvatar(data?.accountsCollection.edges[0].node.slug)}
+              name={data.accountsCollection.edges[0].node.name}
+              slug={data.accountsCollection.edges[0].node.slug}
+              exp={data.accountsCollection.edges[0].node.experience}
             />
+            {/*<Left>*/}
+            {/*  <LiveBorders>*/}
+            {/*    <button onClick={()=> logOut()}>*/}
+            {/*      <T3>ВЫЙТИ</T3>*/}
+            {/*    </button>*/}
+            {/*  </LiveBorders>*/}
+            {/*</Left>*/}
+            {/*<Right>*/}
+            {/*  <H1>{data.accountsCollection.edges[0].node.name}</H1>*/}
+            {/*  <H4 style={{color: COLOR.text[1]}}>*/}
+            {/*    @{data.accountsCollection.edges[0].node.slug}*/}
+            {/*  </H4>*/}
+            {/*</Right>*/}
+
+            {/*<Avatar*/}
+            {/*  src={accountAvatar(data?.accountsCollection.edges[0].node.slug)}*/}
+            {/*  alt={'avatar'}*/}
+            {/*/>*/}
           </>
 
         )}

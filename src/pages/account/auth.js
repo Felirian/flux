@@ -18,7 +18,7 @@ const Auth = () => {
   return (
     <>
       <Head>
-        <title>Flux | {login ? 'Вход' : 'Регистрация'}</title>
+        <title>{login ? 'Flux | Вход' : 'Flux | Регистрация'}</title>
       </Head>
       <AuthPage>
         {login ? <LogIn changeLogin={changeLogin}/> : <SignUp changeLogin={changeLogin}/>}
