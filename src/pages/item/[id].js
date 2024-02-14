@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import {useRouter} from "next/router";
 import {useQuery} from "@apollo/client";
-import {GET_ITEM} from "@/supabase/services";
+import {addItemInBasket, GET_ITEM} from "@/supabase/services";
+import Head from "next/head";
+import {H1, T1} from "@/style/TextTags";
 
 const Item = () => {
   const router = useRouter();
@@ -9,34 +11,36 @@ const Item = () => {
   const {data, loading, error} = useQuery(GET_ITEM, {
     variables: {slug: id}
   })
-  let itemData
+  let itemData = null
   if (data && !error) {
     itemData = data?.itemsCollection.edges[0].node
   }
 
-  console.log(itemData?.accessoryCollection.edges);
+  //console.log(itemData?.accessoryCollection.edges);
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>{itemData !== null ? `FLUX | ${itemData.name}` : 'FLUX | Loading...' }</title>
+      </Head>
       {
         loading ? (
-          <h1>loading...</h1>
+          <H1>loading...</H1>
         ) : error ? (
           <>
-            <h1>error(</h1>
-            <h1>error(</h1>
+            <H1>error(</H1>
           </>
         ) : (
           <>
-            <h1>data</h1>
-            <h2>{itemData.name}</h2>
+            <H1>{itemData.name}</H1>
             {itemData.accessoryCollection.edges.map((el,i)=> {
-              <p className={'t3'}>{el.node.tags.name}</p>
+              <T1 className={'t3'} key={`game_tag_${i}`}>{el.node.tags.name}</T1>
             })}
           </>
         )
       }
-    </div>
+      <button onClick={() => addItemInBasket(itemData?.id, 'c7b1d1e6-377f-4243-bd60-e731e811b122')}>ADD</button>
+    </>
   );
 };
 

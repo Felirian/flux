@@ -12,7 +12,7 @@ export const CardCol2 = ({slug, tags, price}) => {
       <Card href={`/item/${slug}`}>
         <Image
           src={`${process.env.NEXT_PUBLIC_DB_URL}/storage/v1/object/public/Images/items/${slug}/col_2_card_img.jpg`}
-          alt={' '}
+          alt={`item_${slug}`}
           width={228}
           height={135}
         />

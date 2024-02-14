@@ -18,6 +18,7 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
   ssrMode: false,
 })
+
 export const checkSession = async () => {
   let loginUser = null
   try {
@@ -38,6 +39,7 @@ export const checkSession = async () => {
   }
   return loginUser;
 };
+
 export const logOut = async () => {
   let {error} = await supabase.auth.signOut()
   if (!error) {
@@ -45,6 +47,18 @@ export const logOut = async () => {
   } else {
     console.log(error);
     return error;
+  }
+}
+
+export const addItemInBasket = async (item, account) => {
+  if (item && account) {
+    let { data, error } = await supabase
+      .rpc('add_item_in_basket', {
+        in_account: account,
+        in_item: item
+      })
+    if (error) console.error('error: ', error)
+    else console.log('data: ',data)
   }
 }
 
@@ -73,6 +87,7 @@ query ($slug: String) {
   }) {
     edges {
       node {
+        id
         name
         slug
         price
@@ -94,7 +109,7 @@ export const GET_ITEMS = gql`
 query {
   itemsCollection {
     edges {
-      node {
+      node {        
         name
         slug
         price

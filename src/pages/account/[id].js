@@ -65,7 +65,9 @@ const Account = () => {
             </Left>
             <Right>
               <H1>{data.accountsCollection.edges[0].node.name}</H1>
-              <H4 style={{color: COLOR.text[1]}}>@{data.accountsCollection.edges[0].node.slug}</H4>
+              <H4 style={{color: COLOR.text[1]}}>
+                @{data.accountsCollection.edges[0].node.slug}
+              </H4>
             </Right>
 
             <Avatar
