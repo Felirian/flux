@@ -7,7 +7,7 @@ import {COLOR} from "@/style/variables";
 import styled from "styled-components";
 
 export const CardCol2 = ({slug, tags, price}) => {
-  console.log(tags);
+  //console.log(tags);
   return (
     <LiveBorders>
       <Card href={`/item/${slug}`}>
@@ -37,8 +37,16 @@ const Card = styled(Link)`
   align-items: flex-start;
   gap: 5px;
   width: fit-content;
+  overflow: hidden;
+  img{
+    transition: 0.5s;
+  }
+  &:hover {
+    img{
+      opacity: 0.5;
+    }
+  }
 `
-
 const Tags = styled.div`
   display: flex;
   align-items: center;

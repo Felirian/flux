@@ -27,6 +27,7 @@ export const LiveBorders = ({children, width, height, color}) => {
 
     background: `radial-gradient(circle at ${gradPos.x}px ${gradPos.y}px, rgba(50,50,50, ${opacity}), transparent  100%)`,
     transition: '0.5s ease',
+    overflow: 'hidden'
   };
   return (
     <div

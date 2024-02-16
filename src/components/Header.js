@@ -25,6 +25,8 @@ export const Header = () => {
     //console.log(userData?.user_metadata.slug);
   }, [auth]);
 
+
+
   const HEADER_LINKS = [
     ['/',[
       {ref: '#main-slider', name: 'Магазин', svg: 'Store'},
@@ -89,6 +91,8 @@ const HeaderWrapper = styled.header`
   overflow: hidden;
   
   width: ${(props)=> props.open ? '40px' : '180px'};
+  
+  z-index: 100;
 
   @media ${BREAKPOINTS.tablet} {
     position: absolute;
