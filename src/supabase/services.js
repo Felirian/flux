@@ -125,6 +125,40 @@ query {
   }
 }
 `;
+export const GET_ITEMS_IN_GROUP = gql`
+query ($collection: String) {
+  collectionCollection (filter: {
+    id: {eq: $collection}
+  }) {
+    edges {
+      node {
+        accessoryCollection {
+          edges {
+            node {
+              items {
+                name
+                slug
+                price
+                accessoryCollection {
+                  edges {
+                    node {
+                      tags {
+                        name
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
+
+
 
 //-------------------------------IMAGES-------------------------------\\
 export const accountAvatar = (slug) => {

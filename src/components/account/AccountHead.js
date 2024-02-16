@@ -9,11 +9,13 @@ import SvgSelector from "@/components/SvgSelector";
 import {logOut} from "@/supabase/services";
 
 const AccountHead = ({img, exp, name, slug, info}) => {
+
   return (
     <HeadWrapper>
       <Section>
         <ImageAvatar src={img} alt={`avatar_${slug}`}/>
         <ExperienceBar exp={Number(exp)}/>
+
         <ButtonWrapper>
           <LiveBorders width={'45%'} color={COLOR.accent.pink}>
             <ExitButton onClick={() => logOut()}>
@@ -28,6 +30,7 @@ const AccountHead = ({img, exp, name, slug, info}) => {
             </SettingsLink>
           </LiveBorders>
         </ButtonWrapper>
+
       </Section>
 
       <Section>
@@ -45,8 +48,6 @@ const HeadWrapper = styled.div`
   display: flex;
   gap: 8px;  
 `
-
-
 
 const Section = styled.section`
   display: flex;
