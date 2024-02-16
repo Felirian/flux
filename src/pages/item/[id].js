@@ -39,18 +39,7 @@ const Item = () => {
               info={itemData?.info}
               slug={itemData?.slug}
             />
-            <ItemHead
-              name={itemData?.name}
-              tags={itemData?.accessoryCollection.edges}
-              info={itemData?.info}
-              slug={itemData?.slug}
-            />
-            <ItemHead
-              name={itemData?.name}
-              tags={itemData?.accessoryCollection.edges}
-              info={itemData?.info}
-              slug={itemData?.slug}
-            />
+
 
             {/*<H1>{itemData?.name}</H1>*/}
             {/*{itemData?.accessoryCollection.edges.map((el,i)=> (*/}
