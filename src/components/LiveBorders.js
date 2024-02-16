@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import {COLOR} from "@/style/variables";
 import {useCursorContext} from "@/pages/_app";
-export const LiveBorders = ({children, width, height}) => {
+export const LiveBorders = ({children, width, height, color}) => {
 
   const ref = useRef(null)
   const mosPos = useCursorContext()
@@ -21,7 +21,7 @@ export const LiveBorders = ({children, width, height}) => {
     width: width ? width : 'fit-content',
     height: height ? height : 'fit-content',
 
-    borderImageSource: `radial-gradient(circle at ${gradPos.x}px ${gradPos.y}px, ${COLOR.text[0]}, transparent  50%)`,
+    borderImageSource: `radial-gradient(circle at ${gradPos.x}px ${gradPos.y}px, ${color? color : COLOR.text[0]}, transparent  100px)`,
     borderImageWidth: '1px',
     borderImageSlice: '9',
 

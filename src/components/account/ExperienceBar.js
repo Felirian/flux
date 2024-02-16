@@ -39,8 +39,7 @@ const ExperienceBarWrapper = styled.div`
   padding: 8px;
 `
 const Row = styled.div`
-  display: flex;
-  
+  display: flex;  
   align-items: center;
   justify-content: space-between;
 `

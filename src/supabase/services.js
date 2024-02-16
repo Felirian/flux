@@ -44,7 +44,7 @@ export const logOut = async () => {
   if (!error) {
     window.location.href = '/';
   } else {
-    console.log(error);
+    alert(error);
     return error;
   }
 }
