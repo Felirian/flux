@@ -14,7 +14,6 @@ const Index = () => {
       <Head>
         <title>FLUX | Магазин</title>
       </Head>
-      <Title>Main Page</Title>
 
       <CardsGroupCol2 title={'Лидеры продаж'} filter={3}/>
 

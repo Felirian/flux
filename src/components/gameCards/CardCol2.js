@@ -50,5 +50,5 @@ const Card = styled(Link)`
 const Tags = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 `

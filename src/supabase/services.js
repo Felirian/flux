@@ -88,6 +88,7 @@ query ($slug: String) {
         id
         name
         slug
+        info
         price
         accessoryCollection {
           edges {
@@ -158,8 +159,6 @@ query ($collection: String) {
 }
 `;
 
-
-
 //-------------------------------IMAGES-------------------------------\\
 export const accountAvatar = (slug) => {
   let result
@@ -174,6 +173,21 @@ export const accountAvatar = (slug) => {
   }
   return result
 }
+
+export const itemMainImg = (slug) => {
+  let result
+
+  const {data: image} = supabase
+    .storage
+    .from('Images')
+    .getPublicUrl(`items/${slug}/full_page_img.jpg`)
+
+  if (image) {
+    result = image.publicUrl
+  }
+  return result
+}
+
 export default supabase
 
 
