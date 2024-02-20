@@ -12,7 +12,7 @@ const ImageLoad = ({img, size, alt}) => {
     coll3: {width: 345, height: 461},
     coll2: {width: 228, height: 135},
   }
-  console.log(SIZES[size]);
+  //console.log(SIZES[size]);
   return (
     <ImageWrapper size={SIZES[size]}>
 

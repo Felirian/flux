@@ -38,6 +38,7 @@ const Item = () => {
               tags={itemData?.accessoryCollection.edges}
               info={itemData?.info}
               slug={itemData?.slug}
+              id={itemData?.id}
             />
 
 

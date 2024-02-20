@@ -2,13 +2,13 @@ import React from 'react';
 import styled from "styled-components";
 import {Caption, T3, T4, Title} from "@/style/TextTags";
 import {FlexRow8px} from "@/style/Containers";
-import {itemMainImg} from "@/supabase/services";
+import {addItemInBasket, itemMainImg} from "@/supabase/services";
 import ImageLoad from "@/components/ImageLoad";
 import {COLOR} from "@/style/variables";
 import {LiveBorders} from "@/components/LiveBorders";
 
 const ItemHead = ({name, tags, info, id, slug}) => {
-  console.log(itemMainImg(slug));
+  //console.log(itemMainImg(slug));
   return (
     <ItemHeadWrapper slug={itemMainImg(slug)}>
 
@@ -33,7 +33,7 @@ const ItemHead = ({name, tags, info, id, slug}) => {
             </button>
           </LiveBorders>
           <LiveBorders>
-            <button>
+            <button onClick={() => addItemInBasket(id, 'c7b1d1e6-377f-4243-bd60-e731e811b122')}>
               <T3>В корзину</T3>
             </button>
           </LiveBorders>
