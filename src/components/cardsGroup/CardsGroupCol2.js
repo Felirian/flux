@@ -29,6 +29,7 @@ const CardsGroupCol2 = ({title, filter}) => {
             {data?.collectionCollection.edges[0].node.accessoryCollection.edges.map((el, i) => (
               <CardCol2
                 key={i}
+                name={el.node.items.name}
                 slug={el.node.items.slug}
                 tags={el.node.items.accessoryCollection.edges}
                 price={el.node.items.price}
