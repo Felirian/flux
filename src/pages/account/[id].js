@@ -38,8 +38,8 @@ const Account = () => {
       <Head>
         <title>
           {data
-            ? `Flux | Account | @${id}`
-            : "Flux | Account | Loading..."
+            ? `FLUX | Account | @${id}`
+            : "FLUX | Account | ..."
           }
         </title>
       </Head>

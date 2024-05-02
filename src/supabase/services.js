@@ -47,7 +47,7 @@ export const logOut = async () => {
     alert(error);
     return error;
   }
-}
+};
 export const addItemInBasket = async (item, account) => {
   if (item && account) {
     let { data, error } = await supabase
@@ -58,7 +58,7 @@ export const addItemInBasket = async (item, account) => {
     if (error) console.error('error: ', error)
     else console.log('data: ',data)
   }
-}
+};
 
 //-------------------------------GRAPHQL-------------------------------\\
 export const GET_ACCOUNT = gql`
@@ -90,7 +90,7 @@ query ($slug: String) {
         slug
         info
         price
-        accessoryCollection {
+        items_tagsCollection {
           edges {
             node {
               tags {
@@ -112,7 +112,7 @@ query {
         name
         slug
         price
-        accessoryCollection {
+        items_tagsCollection {
           edges {
             node {
               tags {
@@ -128,26 +128,21 @@ query {
 `;
 export const GET_ITEMS_IN_GROUP = gql`
 query ($collection: String) {
-  collectionCollection (filter: {
-    id: {eq: $collection}
+  items_collectionCollection(filter: {
+    collection_id: {eq: $collection}
   }) {
     edges {
-      node {
-        accessoryCollection {
-          edges {
-            node {
-              items {
-                name
-                slug
-                price
-                accessoryCollection {
-                  edges {
-                    node {
-                      tags {
-                        name
-                      }
-                    }
-                  }
+      node {        
+        items {
+          id
+          name
+          slug
+          price
+          items_tagsCollection {
+            edges{
+              node {
+                tags {
+                  name
                 }
               }
             }
@@ -172,7 +167,7 @@ export const accountAvatar = (slug) => {
     result = image.publicUrl
   }
   return result
-}
+};
 
 export const itemMainImg = (slug) => {
   let result
@@ -186,7 +181,7 @@ export const itemMainImg = (slug) => {
     result = image.publicUrl
   }
   return result
-}
+};
 
 export default supabase
 

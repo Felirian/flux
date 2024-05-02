@@ -7,11 +7,15 @@ import styled from "styled-components";
 import {CardCol2} from "@/components/gameCards/CardCol2";
 
 const CardsGroupCol2 = ({title, filter}) => {
-  const {data, error, loading} = useQuery(GET_ITEMS_IN_GROUP, {
+  const {
+    data,
+    error,
+    loading
+  } = useQuery(GET_ITEMS_IN_GROUP, {
     variables: {collection: filter}
   })
 
-  //console.log(data?.collectionCollection.edges[0].node.accessoryCollection.edges);
+  //console.log(data?.items_collectionCollection.edges);
   return (
     <GroupWrapper>
       <GroupTitle><H1>{title}</H1></GroupTitle>
@@ -26,12 +30,12 @@ const CardsGroupCol2 = ({title, filter}) => {
           </>
         ) : (
           <>
-            {data?.collectionCollection.edges[0].node.accessoryCollection.edges.map((el, i) => (
+            {data?.items_collectionCollection.edges.map((el, i) => (
               <CardCol2
                 key={i}
                 name={el.node.items.name}
                 slug={el.node.items.slug}
-                tags={el.node.items.accessoryCollection.edges}
+                tags={el.node.items.items_tagsCollection.edges}
                 price={el.node.items.price}
               />
             ))}

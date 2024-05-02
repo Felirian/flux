@@ -17,7 +17,7 @@ const Item = () => {
     itemData = data?.itemsCollection.edges[0].node
   }
 
-  //console.log(itemData?.accessoryCollection.edges);
+  console.log(itemData);
 
   return (
     <>
@@ -35,7 +35,7 @@ const Item = () => {
           <>
             <ItemHead
               name={itemData?.name}
-              tags={itemData?.accessoryCollection.edges}
+              tags={itemData?.items_tagsCollection.edges}
               info={itemData?.info}
               slug={itemData?.slug}
               id={itemData?.id}
@@ -43,7 +43,7 @@ const Item = () => {
 
 
             {/*<H1>{itemData?.name}</H1>*/}
-            {/*{itemData?.accessoryCollection.edges.map((el,i)=> (*/}
+            {/*{itemData?.items_tagsCollection.edges.map((el,i)=> (*/}
             {/*  <T1 key={`game_tag_${i}`}>{el.node.tags?.name}</T1>*/}
             {/*))}*/}
           </>
