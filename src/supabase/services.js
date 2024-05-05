@@ -1,11 +1,14 @@
 import {createClient,} from '@supabase/supabase-js';
 import {ApolloClient, InMemoryCache} from "@apollo/client";
 import {gql} from "@apollo/client";
+import {useEffect, useState} from "react";
 
 const supabase_key = process.env.NEXT_PUBLIC_DB_SERVICE_KEY
 const supabase_url = process.env.NEXT_PUBLIC_DB_URL
 const supabase = createClient(supabase_url, supabase_key);
 
+const steamApiKey = 'E50AB7E5A1FCCF19F0EA71DBFF190B51'
+const gameId = '413150'
 //--------------------------------FETCH--------------------------------\\
 export const client = new ApolloClient({
   uri: supabase_url + '/graphql/v1',
@@ -59,6 +62,39 @@ export const addItemInBasket = async (item, account) => {
     else console.log('data: ',data)
   }
 };
+
+export function useSteamGameData(gameId) {
+  const [gameData, setGameData] = useState({ data: null, loading: true, error: null });
+
+  useEffect(() => {
+    const fetchGameData = async () => {
+
+      const url = `https://steam-api7.p.rapidapi.com/appDetails/271590`;
+      //const url = `https://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=${steamApiKey}&appid=${gameId}&format=json`;
+
+      try {
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'X-RapidAPI-Key': '9ef2c584f0mshc39c18732451fc6p12abc8jsnd4650ce51313',
+            'X-RapidAPI-Host': 'steam-api7.p.rapidapi.com'
+          }
+        });
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setGameData({ data: data, loading: false, error: null });
+      } catch (error) {
+        setGameData({ data: null, loading: false, error: error.message });
+      }
+    };
+
+    fetchGameData();
+  }, [gameId]);
+
+  return gameData;
+}
 
 //-------------------------------GRAPHQL-------------------------------\\
 export const GET_ACCOUNT = gql`
