@@ -69,15 +69,15 @@ export function useSteamGameData(gameId) {
   useEffect(() => {
     const fetchGameData = async () => {
 
-      const url = `https://steam-api7.p.rapidapi.com/appDetails/${gameId}`;
+      const url = `https://store.steampowered.com/api/appdetails/?appids=413150`;
       //const url = `https://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=${steamApiKey}&appid=${gameId}&format=json`;
 
       try {
         const response = await fetch(url, {
           method: 'GET',
           headers: {
-            'X-RapidAPI-Key': '9ef2c584f0mshc39c18732451fc6p12abc8jsnd4650ce51313',
-            'X-RapidAPI-Host': 'steam-api7.p.rapidapi.com'
+            "Accept": "application/json",
+            'Access-Control-Allow-Origin': 'http://localhost:3001',
           }
         });
         if (!response.ok) {
@@ -87,6 +87,7 @@ export function useSteamGameData(gameId) {
         setGameData({ data: data, loading: false, error: null });
       } catch (error) {
         setGameData({ data: null, loading: false, error: error.message });
+        console.log(error);
       }
     };
 

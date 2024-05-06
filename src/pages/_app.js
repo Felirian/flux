@@ -63,25 +63,8 @@ const MainWrapper = styled.main`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  
-  @media ${BREAKPOINTS.laptop} {
-    max-width: 100%;
-    width: 100%;
-    margin: 0;
-    background-color: pink;
-  }
-  @media ${BREAKPOINTS.tablet} {
-    margin-left: 40px;
-    background-color: red;
-  }
-  @media ${BREAKPOINTS.mobile} {
-    margin-left: 0;
-    margin-top: 40px;
-    background-color: blue;
-  }
-  @media ${BREAKPOINTS.smallMobile} {
-    background-color: green;
-  }
+  position: relative;
+  overflow-x: hidden;  
 `
 
 const GlobalStyle = createGlobalStyle`
@@ -94,7 +77,6 @@ const GlobalStyle = createGlobalStyle`
 
   html, body {    
     background-color: ${COLOR.bg[0]};
-    height: 100%;
   }
   
   main {
