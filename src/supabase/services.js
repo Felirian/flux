@@ -69,7 +69,7 @@ export function useSteamGameData(gameId) {
   useEffect(() => {
     const fetchGameData = async () => {
 
-      const url = `https://steam-api7.p.rapidapi.com/appDetails/271590`;
+      const url = `https://steam-api7.p.rapidapi.com/appDetails/${gameId}`;
       //const url = `https://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=${steamApiKey}&appid=${gameId}&format=json`;
 
       try {

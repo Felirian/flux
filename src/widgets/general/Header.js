@@ -5,7 +5,6 @@ import Link from "next/link";
 import {authContext} from "@/shared/Context";
 import styled from "styled-components";
 import {BREAKPOINTS, COLOR} from "@/style/variables";
-import {useMediaQuery} from "@mui/material";
 import {H4} from "@/style/TextTags";
 import {checkSession} from "@/supabase/services";
 
@@ -13,8 +12,6 @@ export const Header = () => {
   const [open, setOpen] = useState(false);
   const [auth, setAuth] = useContext(authContext)
   const [userData, setUserData] = useState(null);
-
-  const laptop = useMediaQuery(BREAKPOINTS.mobile);
 
   useEffect(() => {
     if (auth) {
@@ -24,8 +21,6 @@ export const Header = () => {
     }
     //console.log(userData?.user_metadata.slug);
   }, [auth]);
-
-
 
   const HEADER_LINKS = [
     ['/',[
@@ -48,6 +43,7 @@ export const Header = () => {
       }],
     ],
   ]
+
   return (
     <HeaderWrapper open={open}>
       <LiveBorders>
@@ -61,14 +57,13 @@ export const Header = () => {
       </LiveBorders>
 
       {HEADER_LINKS.map((group, index) => (
-        <MenuGroup key={index}>
+        <MenuGroup key={`header_group_${index}`} open={open}>
           {group[1].map((link, i)=>(
             <LiveBorders key={i}>
-              <Link href={group[0] + link.ref}>
+              <Link href={group[0] + link.ref} >
                 <SvgSelector svg={link.svg}/>
-                <H4>{link.name}</H4>
+                <H4 style={{transitionDelay: `${i/10}s`}}>{link.name}</H4>
               </Link>
-
             </LiveBorders>
           ))}
         </MenuGroup>
@@ -90,45 +85,32 @@ const HeaderWrapper = styled.header`
   
   overflow: hidden;
   
-  width: ${(props)=> props.open ? '40px' : '180px'};
+  width: ${(props)=> props.open ? '180px' : '40px' };
   
-  z-index: 100;
-
-  @media ${BREAKPOINTS.tablet} {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-  @media ${BREAKPOINTS.mobile} {
-    width: 100%;
-    flex-direction: row;
-    height: ${(props)=> props.open ? '40px' : '180px'};
-    overflow-y: hidden;
-  }
-  @media ${BREAKPOINTS.smallMobile} {
-    
-  }
+  z-index: 100;  
 `
 
 const MenuGroup = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;  
+  align-items: flex-start;
+  ${H4} {
+    transition: 0.5s;
+    transition-delay: ${(props)=> !props.open && 0}s !important;
+    width: 100%;
+    opacity: ${(props)=> props.open ? 1 : 0};   
+  }
   a {
+    transition: 0.5s;
     display: flex;
-    width: 180px;
+    width: ${(props)=> props.open ? 180 : 40}px;
     //padding: 10px;
     align-items: center;
     gap: 10px;
     svg {
+      flex-shrink: 0;
       width: 40px;
-    }
-    @media ${BREAKPOINTS.mobile} {
-      width: fit-content;
-      h4 {display: none}
-    }
-  }
-  @media ${BREAKPOINTS.mobile} {
-    
-  }
+      height: 40px;
+    }    
+  }  
 `
