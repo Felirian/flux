@@ -1,8 +1,6 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import {Header} from "@/widgets/general/Header";
-import Footer from "@/widgets/general/Footer";
 import {authContext, adminContext} from "@/shared/Context";
-//import '../style/styles.scss'
 import {ApolloProvider} from "@apollo/client";
 import {checkSession, client} from "@/supabase/services";
 import styled, {createGlobalStyle} from "styled-components";
@@ -54,17 +52,38 @@ const _App = ({Component, pageProps}) => {
 
 const Display = styled.div`
   width: 100%;
-  height: 100%;
-  display: flex;
+  height: auto;
+  display: flex;  
+  
+  position: relative;
+  
+  @media ${BREAKPOINTS.mobile} {
+    flex-direction: column;
+  }
+  //background-color: blue;
 `
 
 const MainWrapper = styled.main`
-  max-width: 1420px;
+  width: 1420px;
+  
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   margin: 0 auto;
+  
   position: relative;
-  overflow-x: hidden;  
+  
+  overflow-x: hidden;
+  overflow-y: clip;
+
+  //background-color: grey;
+  @media ${BREAKPOINTS.laptop} {
+    width: 95.24vw;
+    margin: 0;
+  }
+  @media ${BREAKPOINTS.mobile} {
+    width: 100%;
+  }
 `
 
 const GlobalStyle = createGlobalStyle`
@@ -77,12 +96,7 @@ const GlobalStyle = createGlobalStyle`
 
   html, body {    
     background-color: ${COLOR.bg[0]};
-  }
-  
-  main {
-    width: 100%;
-    background-color: $color-bg-1;
-  }
+  }  
 
   p,
   a,
@@ -117,8 +131,7 @@ const GlobalStyle = createGlobalStyle`
 
     }
   }
-
-  //----- Text Tags ------\\\\
+  
   a {
     text-decoration: none;
     color: inherit;

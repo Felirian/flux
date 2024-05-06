@@ -18,14 +18,10 @@ export const COLOR = {
 }
 const breakpoints = {
   bp1600: '1600px',
-  bp1400: '1400px',
   bp840: '840px',
-  bp480: '480px',
 }
 
 export const BREAKPOINTS = {
   laptop: `(max-width: ${breakpoints.bp1600})`,
-  tablet: `(max-width: ${breakpoints.bp1400})`,
   mobile: `(max-width: ${breakpoints.bp840})`,
-  smallMobile: `(max-width: ${breakpoints.bp480})`,
 };
