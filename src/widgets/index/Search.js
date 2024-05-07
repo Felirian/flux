@@ -1,18 +1,34 @@
-import React from 'react';
-import {useQuery} from "@apollo/client";
-import {GET_ITEMS_SEARCH} from "@/supabase/services";
+import React, {useState} from 'react';
+import {useLazyQuery, useQuery} from "@apollo/client";
+import {GET_ITEMS_SEARCH, GET_NAMES_SEARCH} from "@/supabase/services";
 import {H1, H2, H3} from "@/style/TextTags";
 import styled from "styled-components";
 import CardLarge from "@/components/gameCards/CardLarge";
+import {Input} from "@/style/StyledComponents";
 
 const Search = () => {
-
+  const [inputSearch, setInputSearch] = useState(null)
   const {data, error, loading} = useQuery(GET_ITEMS_SEARCH, {
     //variables:
   })
 
+  const [searchGames, { loading: textLoad, error: textError, data: dataError }] = useLazyQuery(GET_NAMES_SEARCH);
+
+  const handleSearch = () => {
+    searchGames({ variables: { query: inputSearch } });
+  };
+
   return (
     <SearchWrapper>
+      <br/><br/>
+      <Input
+        type="text"
+        value={inputSearch}
+        onChange={(e) => setInputSearch(e.target.value)}
+        placeholder="Поиск игр..."
+      />
+      <button onClick={handleSearch}>Искать</button>
+      <br/><br/>
       {loading ? (
         <>
           <H2>Loading..</H2>

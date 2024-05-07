@@ -175,6 +175,19 @@ query {
 }
 `;
 
+export const GET_NAMES_SEARCH = gql`
+query ($query: String!) {
+  itemsCollection (query: $query) {
+    edges {
+      node {        
+        name        
+        slug
+      }
+    }
+  }
+}
+`;
+
 export const GET_ITEMS_IN_GROUP = gql`
 query ($collection: String) {
   items_collectionCollection(filter: {
