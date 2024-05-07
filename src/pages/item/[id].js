@@ -17,7 +17,6 @@ const Item = () => {
     variables: {slug: id}
   })
 
-  console.log(data?.itemsCollection);
 
 
   return (
@@ -43,7 +42,7 @@ const Item = () => {
             <Wallpaper>
               {data?.itemsCollection.edges[0].node.video !== null ? (
                 <VideoBg
-                  src={data?.itemsCollection.edges[0].node.video}
+                  src={ data?.itemsCollection.edges[0].node.video}
                   typeof={'video/mp4'}
                   controls={false}
                   autoPlay={true}
@@ -63,9 +62,6 @@ const Item = () => {
                 <GameInfo>
                   {data?.itemsCollection.edges[0].node.pc_characteristics}
                 </GameInfo>
-                {/*<GameInfo>*/}
-                {/*  {data?.itemsCollection.edges[0].node.minimum_pc_characteristics}*/}
-                {/*</GameInfo>*/}
 
                 <GroupTitle><H1>Об игре</H1></GroupTitle>
                 <GameInfo>
@@ -75,7 +71,7 @@ const Item = () => {
 
               <GameTitle>
                 <LogoImg
-                  src={data?.itemsCollection.edges[0].node.logo_img}
+                  src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${data?.itemsCollection.edges[0].node.steamId}/logo.png`}
                   alt={`logo_${data?.itemsCollection.edges[0].node.name}`}
                 />
               </GameTitle>

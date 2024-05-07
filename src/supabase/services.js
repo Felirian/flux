@@ -124,10 +124,12 @@ query ($slug: String) {
       node {        
         name
         video
-        logo_img
+        
         slug
         info
         price
+        
+        steamId
         
         pc_characteristics
         
@@ -145,15 +147,20 @@ query ($slug: String) {
   }
 }
 `;
-export const GET_ITEMS = gql`
+export const GET_ITEMS_SEARCH = gql`
 query {
   itemsCollection {
     edges {
       node {        
-        name
+        name        
         slug
+        
         price
-        items_tagsCollection {
+        discount
+        
+        steamId
+        
+        items_tagsCollection (first: 3) {
           edges {
             node {
               tags {
@@ -167,6 +174,7 @@ query {
   }
 }
 `;
+
 export const GET_ITEMS_IN_GROUP = gql`
 query ($collection: String) {
   items_collectionCollection(filter: {

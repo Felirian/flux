@@ -75,7 +75,7 @@ const MainWrapper = styled.main`
   overflow-x: hidden;
   overflow-y: clip;
 
-  //background-color: grey;
+  background-color: grey;
   @media ${BREAKPOINTS.laptop} {
     width: 95.24vw;
     margin: 0;
