@@ -31,10 +31,10 @@ export const Header = () => {
       {ref: '#category-1', name: 'Категории', svg: 'Categories'},
       {ref: '#search', name: 'Поиск', svg: 'Search'},
     ]],
-    ['', [
-      {ref: '/news', name: 'Новости', svg: 'News'},
-      {ref: '/refill', name: 'Пополнение', svg: 'Refill'}
-    ]],
+    // ['', [
+    //   {ref: '/news', name: 'Новости', svg: 'News'},
+    //   {ref: '/refill', name: 'Пополнение', svg: 'Refill'}
+    // ]],
     ['/account', [
       {ref: '/settings', name: 'Настройки', svg: 'Settings'},
       {ref: `/basket`, name: 'Корзина', svg: 'Basket'},

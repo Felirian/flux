@@ -121,12 +121,16 @@ query ($slug: String) {
     slug: { eq: $slug }
   }) {
     edges {
-      node {
-        id
+      node {        
         name
+        video
+        logo_img
         slug
         info
         price
+        
+        pc_characteristics
+        
         items_tagsCollection {
           edges {
             node {

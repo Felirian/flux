@@ -17,7 +17,6 @@ const _App = ({Component, pageProps}) => {
   const [admin, setAdmin] = useState(false)
   const [cursorPosition, setCursorPosition] = useState({x: 0, y: 0});
 
-
   // позиция курсора для живых границ
   const updateCursorPosition = (e) => {
     setCursorPosition({x: e.clientX, y: e.clientY});
