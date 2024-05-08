@@ -1,5 +1,5 @@
 import React from 'react';
-import {Caption, H2, T2, T3} from "@/style/TextTags";
+import {Caption, H2, T1, T2, T3} from "@/style/TextTags";
 import styled from "styled-components";
 import {COLOR} from "@/style/variables";
 
@@ -18,9 +18,9 @@ const CardDescription = ({name, tags, discount, price}) => {
         {discount ? (
           <>
             <T3
-              style={{color: COLOR.text[1]}}
+              style={{color: COLOR.text[1], textDecoration: 'line-through'}}
             >{discount} ₽</T3>
-            <T2>{price} ₽</T2>
+            <T1 style={{color: COLOR.accent.green}}>{price} ₽</T1>
           </>
         ) : (
           <T2>{price} ₽</T2>
