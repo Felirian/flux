@@ -6,7 +6,7 @@ import {Caption, H3, T1} from "@/style/TextTags";
 import {COLOR} from "@/style/variables";
 import styled from "styled-components";
 
-export const CardCol2 = ({name, slug, tags, price}) => {
+export const CardSmall = ({name, slug, tags, price}) => {
   //console.log(tags);
   return (
     <LiveBorders>

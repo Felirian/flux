@@ -4,7 +4,7 @@ import {H1, H2} from "@/style/TextTags";
 import {useQuery} from "@apollo/client";
 import {GET_ITEMS_IN_GROUP} from "@/supabase/services";
 import styled from "styled-components";
-import {CardCol2} from "@/components/gameCards/CardCol2";
+import {CardSmall} from "@/components/gameCards/CardSmall";
 
 const CardsGroupCol2 = ({title, filter}) => {
   const {
@@ -31,7 +31,7 @@ const CardsGroupCol2 = ({title, filter}) => {
         ) : (
           <>
             {data?.items_collectionCollection.edges.map((el, i) => (
-              <CardCol2
+              <CardSmall
                 key={i}
                 name={el.node.items.name}
                 slug={el.node.items.slug}
