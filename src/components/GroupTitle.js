@@ -15,6 +15,8 @@ const GroupTitleWrapper = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
 `
 
 const Line = styled.div`

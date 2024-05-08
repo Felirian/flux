@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useQuery} from "@apollo/client";
 import {GET_NAMES_SEARCH} from "@/supabase/services";
 import {Input} from "@/style/StyledComponents";
@@ -7,7 +7,7 @@ import {LiveBorders} from "@/components/LiveBorders";
 import styled from "styled-components";
 import Link from "next/link";
 
-const NameSearch = () => {
+const NameSearch = ({setGlobalSearch}) => {
 
   const [inputSearch, setInputSearch] = useState('')
   const {loading: textLoad, error: textError, data: dataText} = useQuery(GET_NAMES_SEARCH, {

@@ -2,16 +2,16 @@ import React from 'react';
 import GroupTitle from "@/components/GroupTitle";
 import {H1, H2} from "@/style/TextTags";
 import {useQuery} from "@apollo/client";
-import {GET_ITEMS_IN_COLLECTION} from "@/supabase/services";
+import {GET_ITEMS_IN_COLLECTION, GET_ITEMS_IN_TAGS} from "@/supabase/services";
 import styled from "styled-components";
-import {CardSmall} from "@/components/gameCards/CardSmall";
+import CardLarge from "@/components/gameCards/CardLarge";
 
 const GroupCollectionSmallCards = ({title, filter}) => {
   const {
     data,
     error,
     loading
-  } = useQuery(GET_ITEMS_IN_COLLECTION, {
+  } = useQuery(GET_ITEMS_IN_TAGS, {
     variables: {collection: filter}
   })
 
@@ -28,8 +28,8 @@ const GroupCollectionSmallCards = ({title, filter}) => {
           </>
         ) : (
           <>
-            {data.items_collectionCollection.edges.map((el, i) => (
-              <CardSmall
+            {data.items_tagsCollection.edges.map((el, i) => (
+              <CardLarge
                 key={`game_${filter}_${i}`}
                 name={el.node.items.name}
                 slug={el.node.items.slug}

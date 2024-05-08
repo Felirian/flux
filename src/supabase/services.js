@@ -149,7 +149,10 @@ query ($slug: String) {
 `;
 export const GET_ITEMS_SEARCH = gql`
 query {
-  itemsCollection (orderBy: {created_at: AscNullsFirst}) {
+  itemsCollection (
+    orderBy: {created_at: AscNullsFirst},
+    filter: {name: {iregex: $name}}
+  ) {
     edges {
       node {        
         name        
@@ -206,6 +209,46 @@ query ($collection: String) {
           
           steamId
           
+          items_tagsCollection {
+            edges{
+              node {
+                tags {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
+export const GET_ITEMS_IN_TAGS = gql`
+query ($collection: Int) {
+  items_tagsCollection(filter: {
+    tag_id: {eq: $collection}
+  }) {
+    edges {
+      node {
+        items {
+          name
+          slug
+          
+          price
+          discount
+          
+          steamId
+          
+          items_tagsCollection {
+            edges{
+              node {
+                tags {
+                  name
+                }
+              }
+            }
+          }
         }
       }
     }

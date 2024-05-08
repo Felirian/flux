@@ -45,6 +45,9 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
+  ${H2} {
+    
+  }
 `
 const TagsWr =styled.div`
   display: flex;

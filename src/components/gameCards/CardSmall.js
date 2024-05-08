@@ -5,10 +5,9 @@ import styled from "styled-components";
 import CardDescription from "@/components/gameCards/CardDescription";
 
 export const CardSmall = ({cardData, name, slug, steamId, discount, price}) => {
-  console.log(cardData.node.items);
   return (
     <LiveBorders>
-      <CardWrapper title={name}>
+      <article title={name}>
         <Card href={`/item/${slug}`}>
 
           <ImgWr>
@@ -23,14 +22,12 @@ export const CardSmall = ({cardData, name, slug, steamId, discount, price}) => {
             price={price}
           />
         </Card>
-      </CardWrapper>
+      </article>
 
     </LiveBorders>
   );
 };
-const CardWrapper = styled.article`
-  
-`
+
 const Card = styled(Link)`
   width: 226px;
   display: flex;

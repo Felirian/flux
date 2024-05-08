@@ -28,15 +28,15 @@ export const Header = () => {
     ['/', [
       {ref: '#main-slider', name: 'Магазин', svg: 'Store'},
       {ref: '#sale', name: 'Скидки', svg: 'Sale'},
-      {ref: '#category-1', name: 'Категории', svg: 'Categories'},
+      {ref: '#category', name: 'Категории', svg: 'Categories'},
       {ref: '#search', name: 'Поиск', svg: 'Search'},
     ]],
-    // ['', [
-    //   {ref: '/news', name: 'Новости', svg: 'News'},
-    //   {ref: '/refill', name: 'Пополнение', svg: 'Refill'}
-    // ]],
+    ['', [
+      // {ref: '/news', name: 'Новости', svg: 'News'},
+      // {ref: '/refill', name: 'Пополнение', svg: 'Refill'}
+    ]],
     ['/account', [
-      {ref: '/settings', name: 'Настройки', svg: 'Settings'},
+      // {ref: '/settings', name: 'Настройки', svg: 'Settings'},
       {ref: `/basket`, name: 'Корзина', svg: 'Basket'},
       {
         ref: `${userData ? `/${userData?.user_metadata.slug}` : '/auth'}`,

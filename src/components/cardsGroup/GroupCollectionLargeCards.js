@@ -15,10 +15,8 @@ const GroupCollectionSmallCards = ({title, filter}) => {
     variables: {collection: filter}
   })
 
-  console.log(data?.items_collectionCollection.edges);
   return (
     <GroupWrapper>
-      <GroupTitle><H1>{title}</H1></GroupTitle>
       <CardsLine>
         {loading ? (
           <>
@@ -38,6 +36,7 @@ const GroupCollectionSmallCards = ({title, filter}) => {
                 steamId={el.node.items.steamId}
                 discount={el.node.items.discount}
                 price={el.node.items.price}
+                tags={el.node.items.items_tagsCollection.edges}
                 cardData={el}
               />
             ))}
@@ -56,6 +55,7 @@ const GroupWrapper = styled.section`
 
 const CardsLine = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 `
 

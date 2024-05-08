@@ -8,16 +8,16 @@ import GroupTitle from "@/components/GroupTitle";
 import NameSearch from "@/widgets/index/Search/NameSearch";
 
 const SearchWidget = () => {
-
+  const [globalSearch, setGlobalSearch] = useState('')
   const {data, error, loading} = useQuery(GET_ITEMS_SEARCH, {
-    //variables:
+    //variables: {name : globalSearch}
   })
 
   return (
-    <SearchWrapper>
+    <SearchWrapper id={'search'}>
       <GroupTitle><Title>Поиск</Title></GroupTitle>
 
-      <NameSearch/>
+      <NameSearch setGlobalSearch={setGlobalSearch}/>
 
       {loading ? (
         <>

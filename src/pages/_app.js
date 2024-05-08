@@ -95,6 +95,7 @@ const GlobalStyle = createGlobalStyle`
 
   html, body {    
     background-color: ${COLOR.bg[0]};
+    scroll-behavior: smooth;
   }  
 
   p,
