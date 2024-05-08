@@ -2,20 +2,20 @@ import React from 'react';
 import GroupTitle from "@/components/GroupTitle";
 import {H1, H2} from "@/style/TextTags";
 import {useQuery} from "@apollo/client";
-import {GET_ITEMS_IN_GROUP} from "@/supabase/services";
+import {GET_ITEMS_IN_COLLECTION} from "@/supabase/services";
 import styled from "styled-components";
 import {CardSmall} from "@/components/gameCards/CardSmall";
 
-const CardsGroupCol2 = ({title, filter}) => {
+const GroupCollectionSmallCards = ({title, filter}) => {
   const {
     data,
     error,
     loading
-  } = useQuery(GET_ITEMS_IN_GROUP, {
+  } = useQuery(GET_ITEMS_IN_COLLECTION, {
     variables: {collection: filter}
   })
 
-  //console.log(data?.items_collectionCollection.edges);
+  console.log(data?.items_collectionCollection.edges);
   return (
     <GroupWrapper>
       <GroupTitle><H1>{title}</H1></GroupTitle>
@@ -30,13 +30,15 @@ const CardsGroupCol2 = ({title, filter}) => {
           </>
         ) : (
           <>
-            {data?.items_collectionCollection.edges.map((el, i) => (
+            {data.items_collectionCollection.edges.map((el, i) => (
               <CardSmall
-                key={i}
+                key={`game_${filter}_${i}`}
                 name={el.node.items.name}
                 slug={el.node.items.slug}
-                tags={el.node.items.items_tagsCollection.edges}
+                steamId={el.node.items.steamId}
+                discount={el.node.items.discount}
                 price={el.node.items.price}
+                cardData={el}
               />
             ))}
           </>
@@ -57,4 +59,4 @@ const CardsLine = styled.div`
   gap: 8px;
 `
 
-export default CardsGroupCol2;
+export default GroupCollectionSmallCards;

@@ -1,32 +1,27 @@
 import React from 'react';
-import Image from "next/image";
 import {LiveBorders} from "@/components/LiveBorders";
 import Link from "next/link";
-import {Caption, H3, T1} from "@/style/TextTags";
-import {COLOR} from "@/style/variables";
 import styled from "styled-components";
+import CardDescription from "@/components/gameCards/CardDescription";
 
-export const CardSmall = ({name, slug, tags, price}) => {
-  //console.log(tags);
+export const CardSmall = ({cardData, name, slug, steamId, discount, price}) => {
+  console.log(cardData.node.items);
   return (
     <LiveBorders>
       <CardWrapper title={name}>
         <Card href={`/item/${slug}`}>
-          <Image
-            src={`${process.env.NEXT_PUBLIC_DB_URL}/storage/v1/object/public/Images/items/${slug}/col_2_card_img.jpg`}
-            alt={`item_${slug}`}
-            width={228}
-            height={135}
-            style={{zIndex: 0}}
+
+          <ImgWr>
+            <CardImg
+              src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${steamId}/header.jpg`}
+              alt={`item_${slug}`}
+            />
+          </ImgWr>
+
+          <CardDescription
+            discount={discount}
+            price={price}
           />
-          {tags &&
-            <Tags>
-              {tags.map((el, i) => (
-                <Caption key={`Caption_${i}`}>{el.node.tags?.name}</Caption>
-              ))}
-            </Tags>
-          }
-          <H3>{price}</H3>
         </Card>
       </CardWrapper>
 
@@ -37,23 +32,23 @@ const CardWrapper = styled.article`
   
 `
 const Card = styled(Link)`
-  display: inline-flex;
+  width: 226px;
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
-  width: fit-content;
-  overflow: hidden;
-  img{
-    transition: 0.5s;
-  }
+  margin: 1px;
   &:hover {
-    img{
+    img {
       opacity: 0.5;
     }
   }
 `
-const Tags = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
+
+const ImgWr = styled.div`
+  width: 100%;
+`
+const CardImg = styled.img`
+  width: 100%;
+  height: 100%; //461 
+  transition: 0.5s;
+  object-fit: cover;
 `

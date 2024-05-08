@@ -8,7 +8,7 @@ const CardDescription = ({name, tags, discount, price}) => {
     <ItemDesc>
       <Left>
         <TagsWr>
-          {tags.map((tag, index) => (
+          {tags && tags.map((tag, index) => (
             <Caption key={`${name}_tag_${index}`}>{tag.node.tags.name}</Caption>
           ))}
         </TagsWr>
@@ -20,7 +20,7 @@ const CardDescription = ({name, tags, discount, price}) => {
             <T3
               style={{color: COLOR.text[1], textDecoration: 'line-through'}}
             >{discount} ₽</T3>
-            <T1 style={{color: COLOR.accent.green}}>{price} ₽</T1>
+            <T2 style={{color: COLOR.accent.green}}>{price} ₽</T2>
           </>
         ) : (
           <T2>{price} ₽</T2>

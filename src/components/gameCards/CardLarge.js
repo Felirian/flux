@@ -4,22 +4,22 @@ import {LiveBorders} from "@/components/LiveBorders";
 import Link from "next/link";
 import CardDescription from "@/components/gameCards/CardDescription";
 
-const CardLarge = ({itemData}) => {
+const CardLarge = ({name, slug, steamId, tags, price, discount}) => {
   return (
     <LiveBorders>
-      <CardWrapper href={`/item/${itemData.node.slug}`}>
+      <CardWrapper href={`/item/${slug}`}>
         <ImgWr>
           <CardImg
-            src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${itemData.node.steamId}/library_600x900.jpg`}
-            alt={`${itemData.node.slug}_image`}
+            src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${steamId}/library_600x900.jpg`}
+            alt={`${slug}_image`}
           />
         </ImgWr>
 
         <CardDescription
-          name={itemData.node.name}
-          tags={itemData.node.items_tagsCollection.edges}
-          discount={itemData.node.discount}
-          price={itemData.node.price}
+          name={name}
+          tags={tags}
+          discount={discount}
+          price={price}
         />
       </CardWrapper>
     </LiveBorders>

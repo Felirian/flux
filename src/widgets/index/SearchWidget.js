@@ -33,6 +33,12 @@ const SearchWidget = () => {
           {data?.itemsCollection.edges.map((item, index) => (
             <CardLarge
               key={`search_result_${index}`}
+              slug={item.node.slug}
+              name={item.node.name}
+              steamId={item.node.steamId}
+              tags={item.node.items_tagsCollection.edges}
+              discount={item.node.discount}
+              price={item.node.price}
               itemData={item}
             />
           ))}

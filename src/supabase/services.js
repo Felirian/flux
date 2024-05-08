@@ -190,27 +190,22 @@ query ($name: String) {
 }
 `;
 
-export const GET_ITEMS_IN_GROUP = gql`
+export const GET_ITEMS_IN_COLLECTION = gql`
 query ($collection: String) {
   items_collectionCollection(filter: {
     collection_id: {eq: $collection}
   }) {
     edges {
       node {        
-        items {
-          id
+        items {          
           name
           slug
+          
           price
-          items_tagsCollection {
-            edges{
-              node {
-                tags {
-                  name
-                }
-              }
-            }
-          }
+          discount
+          
+          steamId
+          
         }
       }
     }
