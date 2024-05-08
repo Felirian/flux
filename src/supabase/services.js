@@ -149,7 +149,7 @@ query ($slug: String) {
 `;
 export const GET_ITEMS_SEARCH = gql`
 query {
-  itemsCollection {
+  itemsCollection (orderBy: {created_at: AscNullsFirst}) {
     edges {
       node {        
         name        
@@ -176,11 +176,13 @@ query {
 `;
 
 export const GET_NAMES_SEARCH = gql`
-query ($query: String!) {
-  itemsCollection (query: $query) {
+query ($name: String) {
+  itemsCollection (filter: {
+    name: {iregex: $name}
+  }) {
     edges {
       node {        
-        name        
+        name
         slug
       }
     }
