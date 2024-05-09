@@ -31,12 +31,7 @@ export const Header = () => {
       {ref: '#category', name: 'Категории', svg: 'Categories'},
       {ref: '#search', name: 'Поиск', svg: 'Search'},
     ]],
-    ['', [
-      // {ref: '/news', name: 'Новости', svg: 'News'},
-      // {ref: '/refill', name: 'Пополнение', svg: 'Refill'}
-    ]],
     ['/account', [
-      // {ref: '/settings', name: 'Настройки', svg: 'Settings'},
       {ref: `/basket`, name: 'Корзина', svg: 'Basket'},
       {
         ref: `${userData ? `/${userData?.user_metadata.slug}` : '/auth'}`,
@@ -45,6 +40,8 @@ export const Header = () => {
       }],
     ],
   ]
+
+  console.log(HEADER_LINKS[1]);
 
   return (
     <HeaderContainer open={open}>
@@ -90,8 +87,8 @@ export const Header = () => {
 
           <LiveBorders>
             <MenuGroup>
-              <Link href={HEADER_LINKS[2][1][2]} >
-                <SvgSelector svg={HEADER_LINKS[2][1][2].svg}/>
+              <Link href={HEADER_LINKS[1][0]} >
+                <SvgSelector svg={HEADER_LINKS[1][1][1].svg}/>
                 {/*<H4 style={{transitionDelay: `${i/10}s`}}>{link.name}</H4>*/}
               </Link>
             </MenuGroup>
@@ -133,15 +130,15 @@ const HeaderContainer = styled.div`
   @media ${BREAKPOINTS.mobile} {
     width: 100%;
     height: 11.11vw;
-    
+
     position: fixed;
     left: 0;
     top: 0;
     z-index: 99;
-    
+
     display: flex;
     justify-content: space-between;
-    
+
     background-color: ${COLOR.bg[1]};
   }
 `
@@ -183,7 +180,7 @@ const MenuGroup = styled.nav`
 
   ${H4} {
     transition: 0.5s;
-    transition-delay: ${(props) => !props.open && 0}s !important;    
+    transition-delay: ${(props) => !props.open && 0}s !important;
     opacity: ${(props) => props.open ? 1 : 0};
   }
 
