@@ -16,27 +16,13 @@ export const SignUp = ({changeLogin}) => {
     password: '',
     confirmPassword: '',
   });
-  // const findUser = () => {
-  //   const {data, loading, error} = useQuery(FIND_USER, {
-  //     variables: {slug: formData.slug}
-  //   })
-  //   if (data) {
-  //     return data
-  //   } else {
-  //     return error
-  //   }
-  //
-  // }
+
   const handleChange = (e) => {
     const {name, value} = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-    // if (findUser) {
-    //   console.log(formData.slug)
-    //   console.log(findUser)
-    // }
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,12 +36,9 @@ export const SignUp = ({changeLogin}) => {
       alert('Пароли не совпадают');
       return;
     }
-    // if (existingUsers?.length !== 0) {
-    //   alert('пользователь существует');
-    //   return;
-    // }
+
     try {
-      // Регистрация нового пользователя
+      // регистрация нового пользователя
       let {data: authData, error: authError} = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,

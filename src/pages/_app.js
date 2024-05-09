@@ -72,8 +72,8 @@ const MainWrapper = styled.main`
   
   position: relative;
   
-  overflow-x: hidden;
-  overflow-y: clip;
+  //overflow-x: hidden;
+  //overflow-y: clip;
 
   //background-color: grey;
   @media ${BREAKPOINTS.laptop} {

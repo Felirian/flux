@@ -12,32 +12,35 @@ const Index = () => {
 
 
   return (
-    <MainWr>
+    <>
       <Head>
         <title>FLUX | Магазин</title>
       </Head>
 
-      <GroupTitle><H1>Лидеры продаж</H1></GroupTitle>
-      <GroupCollectionLargeCards title={'Лидеры продаж'} filter={3}/>
+      <MainWr>
+        <GroupTitle><H1>Лидеры продаж</H1></GroupTitle>
+        <GroupCollectionLargeCards title={'Лидеры продаж'} filter={3}/>
 
-      <GroupTitle><H1 id={'sale'}>Скидки</H1></GroupTitle>
-      <GroupCollectionSmallCards title={'Скидки'} filter={1}/>
+        <GroupTitle><H1 id={'sale'}>Скидки</H1></GroupTitle>
+        <GroupCollectionSmallCards title={'Скидки'} filter={1}/>
 
-      <GroupTitle><Title id={'category'}>Категории</Title></GroupTitle>
-      <H1>Инди игры</H1>
-      <GroupTagsSmallCards title={'Инди игры'} filter={4}/>
-      <H1>Экшн</H1>
-      <GroupTagsSmallCards title={'Инди игры'} filter={1}/>
-      <SearchWidget/>
+        <GroupTitle><Title id={'category'}>Категории</Title></GroupTitle>
+        <H1>Инди игры</H1>
+        <GroupTagsSmallCards title={'Инди игры'} filter={4}/>
 
-    </MainWr>
+        <H1>Экшн</H1>
+        <GroupTagsSmallCards title={'Инди игры'} filter={1}/>
+
+        <SearchWidget/>
+      </MainWr>
+
+    </>
   );
 };
 
 const MainWr = styled.div`
   display: flex;
   flex-direction: column;
-  //gap: 40px;
   ${H1} {
     margin-bottom: 20px;
   }

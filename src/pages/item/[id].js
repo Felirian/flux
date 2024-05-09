@@ -8,6 +8,7 @@ import styled from "styled-components";
 import {COLOR} from "@/style/variables";
 import Markdown from "react-markdown";
 import GroupTitle from "@/components/GroupTitle";
+import GameDescription from "@/widgets/itemPage/GameDescription";
 
 const Item = () => {
   const router = useRouter();
@@ -30,6 +31,7 @@ const Item = () => {
           }
         </title>
       </Head>
+
       {
         loading ? (
           <H1>loading...</H1>
@@ -39,43 +41,23 @@ const Item = () => {
           </>
         ) : (
           <ItemWrapper>
-            <Wallpaper>
-              {data?.itemsCollection.edges[0].node.video !== null ? (
-                <VideoBg
-                  src={ data?.itemsCollection.edges[0].node.video}
-                  typeof={'video/mp4'}
-                  controls={false}
-                  autoPlay={true}
-                  loop={true}
-                  muted={true}
-                  playsInline={true}
-                />
-              ) : (
-                <H1>image</H1>
-              )}
-            </Wallpaper>
+            <VideoWr>
+              <VideoBg
+                src={ data?.itemsCollection.edges[0].node.video}
+                typeof={'video/mp4'}
+                controls={false}
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                playsInline={true}
+              />
+            </VideoWr>
 
-            <GameDescription>
 
-              <GameDescriptionWrapper>
-                <GroupTitle><H1>Характеристики</H1></GroupTitle>
-                <GameInfo>
-                  {data?.itemsCollection.edges[0].node.pc_characteristics}
-                </GameInfo>
 
-                <GroupTitle><H1>Об игре</H1></GroupTitle>
-                <GameInfo>
-                  {data?.itemsCollection.edges[0].node.info}
-                </GameInfo>
-              </GameDescriptionWrapper>
-
-              <GameTitle>
-                <LogoImg
-                  src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${data?.itemsCollection.edges[0].node.steamId}/logo.png`}
-                  alt={`logo_${data?.itemsCollection.edges[0].node.name}`}
-                />
-              </GameTitle>
-            </GameDescription>
+            <GameDescription
+              gameData={data?.itemsCollection.edges[0].node}
+            />
 
           </ItemWrapper>
         )
@@ -87,113 +69,40 @@ const Item = () => {
 
 const ItemWrapper = styled.div`
   width: 100%;
+  height: 100%;
   position: relative;
+  display: block;
+  flex-direction: column;
 `
 
-const Wallpaper = styled.div`
+const VideoWr = styled.div`
   width: 100%;
-  //background-color: red;
-    //background-image: linear-gradient(0deg, ${
-    COLOR.bg[0]
-  } 0%, rgba(255,255,255,0) 50%);
+  height: 800px;
 
-`
-const VideoBg = styled.video`
-  width: 100%;
-  height: auto;
-  box-sizing: content-box;
-`
-const GameDescription = styled.div`
-  display: flex;
-  position: relative;
-  width: 100%;
-`
-
-const GameTitle = styled.div`
   position: sticky;
-  width: 100%;
-  height: 400px;
   top: 0;
   left: 0;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: end;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: linear-gradient(90deg, #0D0D0D 5%, rgba(255, 255, 255, 0) 50%, #0D0D0D 95%);
+    width: 100%;
+    height: 800px;
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
 `
 
-const LogoImg = styled.img`
+const VideoBg = styled.video`
   width: 100%;
-  height: auto;
-  
-  max-width: 400px;
-  max-height: 400px;
-`
-const GameDescriptionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  width: 600px;
-  //height: 400vw;
-  
+  height: 100%;
+    
 `
 
-const GameInfo = styled(Markdown)`
-  display: flex;
-  flex-direction: column;
+const Fade = styled.div`
   
-  gap: 20px;
-  
-  width: 100%;
-  
-  h1, h2 {
-    font-family: 'Jost', sans-serif;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 30px;
-    margin-top: 20px;
-  }
-  p {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16px;
-  }
-  img {
-    width: 600px;
-    height: auto;
-  }
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    //background-color: gray;
-    
-    li {
-      font-family: 'Jost', sans-serif;
-      font-size: 16px;
-      font-style: normal;
-      font-weight: 200;
-      line-height: 18px;
-      margin-left: 30px;
-      &::marker {        
-        font-size: 10px;
-        color: ${COLOR.text[1]};
-      }
-      &:nth-child(even) {
-        p{
-          color: ${COLOR.text[1]};
-        }
-        
-      }
-      &:nth-child(odd) {
-        text-align: left;
-      }
-    }
-    
-    
-  }
 `
 
 export default Item;

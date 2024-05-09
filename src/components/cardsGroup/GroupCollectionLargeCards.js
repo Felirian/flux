@@ -1,6 +1,5 @@
 import React from 'react';
-import GroupTitle from "@/components/GroupTitle";
-import {H1, H2} from "@/style/TextTags";
+import {H2} from "@/style/TextTags";
 import {useQuery} from "@apollo/client";
 import {GET_ITEMS_IN_COLLECTION} from "@/supabase/services";
 import styled from "styled-components";
