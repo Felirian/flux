@@ -1,28 +1,19 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import SvgSelector from "@/components/SvgSelector";
 import {LiveBorders} from "@/components/LiveBorders";
 import Link from "next/link";
-import {authContext} from "@/shared/Context";
 import styled from "styled-components";
 import {BREAKPOINTS, COLOR} from "@/style/variables";
 import {H4} from "@/style/TextTags";
-import {checkSession} from "@/supabase/services";
+import {useSession} from "@/supabase/services";
 import {useMediaQuery} from "@mui/material";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
-  const [auth, setAuth] = useContext(authContext)
-  const [userData, setUserData] = useState(null);
+
   const isMobile = useMediaQuery(BREAKPOINTS.mobile);
 
-  useEffect(() => {
-    if (auth) {
-      checkSession()
-        .then(loginUser => setUserData(loginUser))
-        .catch(error => console.error('Ошибка:', error.message))
-    }
-    //console.log(userData?.user_metadata.slug);
-  }, [auth]);
+  const { userMetaData, userError} = useSession()
 
   const HEADER_LINKS = [
     ['/', [
@@ -34,14 +25,12 @@ export const Header = () => {
     ['/account', [
       {ref: `/basket`, name: 'Корзина', svg: 'Basket'},
       {
-        ref: `${userData ? `/${userData?.user_metadata.slug}` : '/auth'}`,
-        name: `${userData ? userData?.user_metadata.name : 'Войти'}`,
+        ref: `${userMetaData && !userError ? `/${userMetaData.slug}` : '/auth'}`,
+        name: `${userMetaData && !userError ? userMetaData.name : 'Войти'}`,
         svg: 'Account'
       }],
     ],
   ]
-
-  console.log(HEADER_LINKS[1]);
 
   return (
     <HeaderContainer open={open}>

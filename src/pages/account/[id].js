@@ -1,14 +1,9 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React from 'react';
 import {useRouter} from "next/router";
-import {authContext} from "@/shared/Context";
-import {H1, H4, T3, Title} from "@/style/TextTags";
-import GroupTitle from "@/components/GroupTitle";
+import {H1} from "@/style/TextTags";
 import styled from "styled-components";
 import {useQuery} from "@apollo/client";
-import {accountAvatar, checkSession, GET_ACCOUNT, logOut} from "@/supabase/services";
-import {COLOR} from "@/style/variables";
-import {LiveBorders} from "@/components/LiveBorders";
-import Image from "next/image";
+import {accountAvatar,  GET_ACCOUNT, useSession} from "@/supabase/services";
 import Head from "next/head";
 import AccountHead from "@/components/account/AccountHead";
 
@@ -16,29 +11,19 @@ const Account = () => {
   const router = useRouter();
   const {id} = router.query;
 
-  const [auth, setAuth] = useContext(authContext)
-  const [userData, setUserData] = useState(null);
+  const { userMetaData, userError} = useSession()
+
 
   const {data, loading, error} = useQuery(GET_ACCOUNT, {
     variables: {slug: id}
   })
 
-  // console.log(accountAvatar('felirian'))
-
-  useEffect(() => {
-    if (auth) {
-      checkSession()
-        .then(loginUser => setUserData(loginUser))
-        .catch(error => console.error('Ошибка:', error.message))
-    }
-  }, [auth]);
-
   return (
     <>
       <Head>
         <title>
-          {data
-            ? `FLUX | Account | @${id}`
+          {userMetaData && !userError
+            ? `FLUX | Account | @${userMetaData.slug}`
             : "FLUX | Account | ..."
           }
         </title>
@@ -64,24 +49,6 @@ const Account = () => {
               slug={data.accountsCollection.edges[0].node.slug}
               exp={data.accountsCollection.edges[0].node.experience}
             />
-            {/*<Left>*/}
-            {/*  <LiveBorders>*/}
-            {/*    <button onClick={()=> logOut()}>*/}
-            {/*      <T3>ВЫЙТИ</T3>*/}
-            {/*    </button>*/}
-            {/*  </LiveBorders>*/}
-            {/*</Left>*/}
-            {/*<Right>*/}
-            {/*  <H1>{data.accountsCollection.edges[0].node.name}</H1>*/}
-            {/*  <H4 style={{color: COLOR.text[1]}}>*/}
-            {/*    @{data.accountsCollection.edges[0].node.slug}*/}
-            {/*  </H4>*/}
-            {/*</Right>*/}
-
-            {/*<Avatar*/}
-            {/*  src={accountAvatar(data?.accountsCollection.edges[0].node.slug)}*/}
-            {/*  alt={'avatar'}*/}
-            {/*/>*/}
           </>
 
         )}
@@ -96,16 +63,6 @@ const Account = () => {
 const AccountWrapper = styled.div`
 
 `
-const Left = styled.div`
 
-`
-const Right = styled.div`
-
-`
-
-const Avatar = styled.img`
-  width: 228px;
-  height: 228px;
-`
 
 export default Account;

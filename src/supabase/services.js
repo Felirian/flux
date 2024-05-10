@@ -22,26 +22,47 @@ export const client = new ApolloClient({
   ssrMode: false,
 })
 
-export const checkSession = async () => {
-  let loginUser = null
-  try {
-    const {data: session, error: sessionError} = await supabase.auth.getSession()
+export const useSession = () => {
+  const [sessionStatus, setSessionStatus] = useState({
+    session: false,
+    userId: null,
+    userMetaData: null,
+    userError: null
+  })
 
-    if (sessionError) {
-      return sessionError;
-    }
+  useEffect(() => {
+    const fetchSession = async () => {
+      try {
+        const { data: dataSession, error: sessionError } = await supabase.auth.getSession();
 
-    if (session) {
-      loginUser = session.session.user
-    } else {
-      // Пользователь не аутентифицирован
-      console.log('Пользователь не аутентифицирован');
-    }
-  } catch (error) {
-    console.error('Ошибка при проверке сессии:', error.message);
-  }
-  return loginUser;
+        if (sessionError) {
+          setSessionStatus(dt => ({
+            ...dt,
+            userError: sessionError
+          }))
+        } else {
+          setSessionStatus({
+            session: true,
+            userId: dataSession.session.user.id,
+            userMetaData: dataSession.session.user.user_metadata,
+            userError: null
+          })
+        }
+      } catch (error) {
+        setSessionStatus(dt => ({
+          ...dt,
+          userError: error.message
+        }))
+      }
+    };
+
+
+    fetchSession();
+  }, []);
+
+  return sessionStatus;
 };
+
 export const logOut = async () => {
   let {error} = await supabase.auth.signOut()
   if (!error) {

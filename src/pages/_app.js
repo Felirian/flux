@@ -1,8 +1,7 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import {Header} from "@/widgets/general/Header";
-import {authContext, adminContext} from "@/shared/Context";
 import {ApolloProvider} from "@apollo/client";
-import {checkSession, client} from "@/supabase/services";
+import {client} from "@/supabase/services";
 import styled, {createGlobalStyle} from "styled-components";
 import {BREAKPOINTS, COLOR} from "@/style/variables";
 
@@ -13,8 +12,6 @@ export const useCursorContext = () => {
 };
 
 const _App = ({Component, pageProps}) => {
-  const [auth, setAuth] = useState(checkSession())
-  const [admin, setAdmin] = useState(false)
   const [cursorPosition, setCursorPosition] = useState({x: 0, y: 0});
 
   // позиция курсора для живых границ
@@ -28,22 +25,18 @@ const _App = ({Component, pageProps}) => {
   return (
     <>
       <CursorContext.Provider value={{cursorPosition}}>
-        <authContext.Provider value={[auth, setAuth]}>
-          <adminContext.Provider value={[admin, setAdmin]}>
 
-            <GlobalStyle/>
+        <GlobalStyle/>
 
-            <Display>
-              <Header/>
-              <MainWrapper>
-                <ApolloProvider client={client}>
-                  <Component {...pageProps} />
-                </ApolloProvider>
-              </MainWrapper>
-            </Display>
+        <Display>
+          <Header/>
+          <MainWrapper>
+            <ApolloProvider client={client}>
+              <Component {...pageProps} />
+            </ApolloProvider>
+          </MainWrapper>
+        </Display>
 
-          </adminContext.Provider>
-        </authContext.Provider>
       </CursorContext.Provider>
     </>
   );
@@ -52,10 +45,10 @@ const _App = ({Component, pageProps}) => {
 const Display = styled.div`
   width: 100%;
   height: auto;
-  display: flex;  
-  
+  display: flex;
+
   position: relative;
-  
+
   @media ${BREAKPOINTS.mobile} {
     flex-direction: column;
   }
@@ -64,14 +57,14 @@ const Display = styled.div`
 
 const MainWrapper = styled.main`
   width: 1420px;
-  
+
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   margin: 0 auto;
-  
+
   position: relative;
-  
+
   @media ${BREAKPOINTS.laptop} {
     width: 95.24vw;
     //margin: 0;
@@ -90,10 +83,10 @@ const GlobalStyle = createGlobalStyle`
     //border: 1px pink solid;
   }
 
-  html, body {    
+  html, body {
     background-color: ${COLOR.bg[0]};
     scroll-behavior: smooth;
-  }  
+  }
 
   p,
   a,
@@ -128,7 +121,7 @@ const GlobalStyle = createGlobalStyle`
 
     }
   }
-  
+
   a {
     text-decoration: none;
     color: inherit;

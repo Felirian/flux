@@ -10,7 +10,7 @@ const ExperienceBar = ({exp}) => {
   const nextLevelExp = (calculateLevel+1) * (calculateLevel+1) * 100;
   const levelProgress = (exp - (calculateLevel * calculateLevel * 100)) / (nextLevelExp-(calculateLevel * calculateLevel * 100)) ;
 
-  console.log(levelProgress);
+  //console.log(levelProgress);
 
   return (
     <ExperienceBarWrapper>

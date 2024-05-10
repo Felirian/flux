@@ -4,12 +4,9 @@ import {LogIn} from "@/components/LogIn";
 import {SignUp} from "@/components/SignUp";
 import {COLOR} from "@/style/variables";
 import Head from "next/head";
-import {authContext} from "@/shared/Context";
 
 const Auth = () => {
   const [login, setLogin] = useState(true)
-  const [auth, setAuth] = useContext(authContext)
-  const [username, setUsername] = useState(null);
 
   const changeLogin = () => {
     setLogin(!login)

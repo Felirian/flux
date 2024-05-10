@@ -4,13 +4,11 @@ import {LiveBorders} from "@/components/LiveBorders";
 import {AuthWrapper, ButtonChange, ButtonSubmit, ButtonsGroups} from "@/pages/account/auth";
 import styled from "styled-components";
 import supabase from "@/supabase/services";
-import {authContext} from "@/shared/Context";
 import {useRouter} from "next/router";
 import {H1} from "@/style/TextTags";
 
 export const LogIn = ({changeLogin}) => {
   const router = useRouter()
-  const [auth, setAuth] = useContext(authContext)
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -40,8 +38,6 @@ export const LogIn = ({changeLogin}) => {
       if (typeof window !== 'undefined') {
         router.push(`/account/felirian`);
       }
-
-      setAuth(true)
     } catch (error) {
       console.error('Ошибка при входе', error.message);
     }
