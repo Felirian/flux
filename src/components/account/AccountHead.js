@@ -24,9 +24,9 @@ const AccountHead = ({img, exp, name, slug, info}) => {
             </ExitButton>
           </LiveBorders>
           <LiveBorders width={'55%'} color={COLOR.accent.green}>
-            <SettingsLink href={'/account/settings'} >
-              <SvgSelector svg={'Settings-Account'}/>
-              <T3>Настройки</T3>
+            <SettingsLink href={'/account/basket'} >
+              <SvgSelector svg={'Basket'}/>
+              <T3>Корзина</T3>
             </SettingsLink>
           </LiveBorders>
         </ButtonWrapper>

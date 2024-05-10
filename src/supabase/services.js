@@ -197,6 +197,38 @@ query {
 }
 `;
 
+export const GET_ITEMS_IN_BASKET = gql`
+  query ($userId: UUID) {
+  basketCollection (filter: {
+    account_id: {eq: $userId}
+  }) {
+    edges{
+      node {
+        items {
+          name        
+          slug
+
+          price
+          discount
+
+          steamId
+
+          items_tagsCollection (first: 3) {
+            edges {
+              node {
+                tags {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
+
 export const GET_NAMES_SEARCH = gql`
 query ($name: String) {
   itemsCollection (filter: {
