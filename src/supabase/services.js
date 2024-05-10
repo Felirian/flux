@@ -144,6 +144,8 @@ query ($slug: String) {
         name
         video
         
+        short_info
+        
         slug
         info
         price

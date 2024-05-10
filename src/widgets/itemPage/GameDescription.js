@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
-import {H1} from "@/style/TextTags";
+import {H1, T3} from "@/style/TextTags";
 import Markdown from "react-markdown";
 import GroupTitle from "@/components/GroupTitle";
 import {BREAKPOINTS, COLOR} from "@/style/variables";
-import {addItemInBasket, useSession} from "@/supabase/services";
+import {addItemInBasket, logOut, useSession} from "@/supabase/services";
+import {LiveBorders} from "@/components/LiveBorders";
+import SvgSelector from "@/components/SvgSelector";
 
 const GameDescription = ({gameData}) => {
 
@@ -29,9 +31,26 @@ const GameDescription = ({gameData}) => {
           src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${gameData.steamId}/logo.png`}
           alt={`logo_${gameData.name}`}
         />
+        <T3>
+          {gameData.short_info}
+        </T3>
         {userId &&
-          <button onClick={() => addItemInBasket(gameData.id, userId)}>ADD</button>
+          <ButtonWrapper>
+            <LiveBorders  color={COLOR.accent.pink}>
+              <ExitButton onClick={() => addItemInBasket(gameData.id, userId)}>
+                <SvgSelector svg={'Basket'}/>
+                <T3>Добавить в корзину</T3>
+              </ExitButton>
+            </LiveBorders>
+            <LiveBorders color={COLOR.accent.green}>
+              <SettingsLink href={`https://store.steampowered.com/app/${gameData.steamId}/`} target={'_blank'}>
+                <SvgSelector svg={'Refill'}/>
+                <T3>Купить</T3>
+              </SettingsLink>
+            </LiveBorders>
+          </ButtonWrapper>
         }
+
 
 
       </GameTitle>
@@ -78,10 +97,19 @@ const GameTitle = styled.div`
   justify-content: center;
   
   position: sticky;
-  top: 40vh;
+  top: 30vh;
   left: 0;
+  
+  gap: 20px;
+  padding: 0 80px;
+  @media ${BREAKPOINTS.laptop} {
+    padding: 0 2vw;
+    gap: 2.38vw;
+  }
   @media ${BREAKPOINTS.mobile} {
     position: relative;
+    padding: 0 9.52vw;
+    gap: 2.38vw;
     top: 0;
   }
 `
@@ -190,6 +218,33 @@ const GameMarkdown = styled(Markdown)`
 
 
   }
+`
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 0;
+  width: 100%;
+  
+  @media ${BREAKPOINTS.laptop} {
+    flex-direction: column;
+  }
+`
+const ExitButton = styled.button`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  p {
+    color: ${COLOR.accent.pink};
+  }  
+`
+const SettingsLink = styled.a`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  ${T3} {    
+    color: ${COLOR.accent.green};    
+  }
+  
 `
 
 export default GameDescription;
