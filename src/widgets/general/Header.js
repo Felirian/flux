@@ -23,7 +23,7 @@ export const Header = () => {
       {ref: '#search', name: 'Поиск', svg: 'Search'},
     ]],
     ['/account', [
-      {ref: `/basket`, name: 'Корзина', svg: 'Basket'},
+      {ref: `${userMetaData && !userError ? `/basket` : '/auth'}`, name: 'Корзина', svg: 'Basket'},
       {
         ref: `${userMetaData && !userError ? `/${userMetaData.slug}` : '/auth'}`,
         name: `${userMetaData && !userError ? userMetaData.name : 'Войти'}`,
