@@ -76,7 +76,7 @@ export const Header = () => {
 
           <LiveBorders>
             <MenuGroup>
-              <Link href={HEADER_LINKS[1][0]} >
+              <Link href={HEADER_LINKS[1][0] + HEADER_LINKS[1][1][1].ref} >
                 <SvgSelector svg={HEADER_LINKS[1][1][1].svg}/>
                 {/*<H4 style={{transitionDelay: `${i/10}s`}}>{link.name}</H4>*/}
               </Link>
@@ -157,6 +157,7 @@ const HeaderWrapper = styled.header`
   @media ${BREAKPOINTS.mobile} {
     padding-top: 11.11vw;
     width: 50vw;
+    height: 100%;
     z-index: -1;
     left: ${(props) => props.open ? 0 : -50}vw;
   }

@@ -1,6 +1,7 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
-import {COLOR} from "@/style/variables";
+import React, { useEffect, useRef, useState} from 'react';
+import {BREAKPOINTS, COLOR} from "@/style/variables";
 import {useCursorContext} from "@/pages/_app";
+import styled from "styled-components";
 export const LiveBorders = ({children, width, height, color}) => {
 
   const ref = useRef(null)
@@ -27,10 +28,11 @@ export const LiveBorders = ({children, width, height, color}) => {
 
     background: `radial-gradient(circle at ${gradPos.x}px ${gradPos.y}px, rgba(50,50,50, ${opacity}), transparent  100%)`,
     transition: '0.5s ease',
-    overflow: 'hidden'
+    overflow: 'hidden',
+
   };
   return (
-    <div
+    <LiveBordersWr
       style={gradientStyle}
       ref={ref}
       onMouseEnter={() => (setOpacity(1))}
@@ -38,6 +40,14 @@ export const LiveBorders = ({children, width, height, color}) => {
     >
 
       {children}
-    </div>
+    </LiveBordersWr>
   );
 };
+
+const LiveBordersWr = styled.div`
+  @media ${BREAKPOINTS.mobile} {
+    background: none !important;
+    border-image-source: none !important;
+  }
+    
+`

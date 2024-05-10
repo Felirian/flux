@@ -9,7 +9,7 @@ const Basket = () => {
       </Head>
 
       <div>
-        <h1>basket</h1>
+        <h1>error</h1>
       </div>
     </>
 
