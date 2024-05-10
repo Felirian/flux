@@ -18,7 +18,7 @@ export const COLOR = {
 }
 const breakpoints = {
   bp1600: '1600px',
-  bp840: '840px',
+  bp840: '480px',
 }
 
 export const BREAKPOINTS = {

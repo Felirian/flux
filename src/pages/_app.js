@@ -72,16 +72,13 @@ const MainWrapper = styled.main`
   
   position: relative;
   
-  //overflow-x: hidden;
-  //overflow-y: clip;
-
-  //background-color: grey;
   @media ${BREAKPOINTS.laptop} {
     width: 95.24vw;
-    margin: 0;
+    //margin: 0;
   }
   @media ${BREAKPOINTS.mobile} {
-    width: 100%;
+    width: 95%;
+    margin: 11.11vw auto;
   }
 `
 

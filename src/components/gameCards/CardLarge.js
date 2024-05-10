@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {LiveBorders} from "@/components/LiveBorders";
 import Link from "next/link";
 import CardDescription from "@/components/gameCards/CardDescription";
+import {BREAKPOINTS} from "@/style/variables";
 
 const CardLarge = ({name, slug, steamId, tags, price, discount}) => {
   return (
@@ -35,6 +36,12 @@ const CardWrapper = styled(Link)`
     img {
       opacity: 0.5;
     }
+  }
+  @media ${BREAKPOINTS.laptop} {
+    width: 45.83vw;
+  }
+  @media ${BREAKPOINTS.mobile} {
+    width: 95.83vw;
   }
 `
 const ImgWr = styled.div`

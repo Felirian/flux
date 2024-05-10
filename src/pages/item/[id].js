@@ -5,9 +5,7 @@ import Head from "next/head";
 import {H1} from "@/style/TextTags";
 import {useQuery} from "@apollo/client";
 import styled from "styled-components";
-import {COLOR} from "@/style/variables";
-import Markdown from "react-markdown";
-import GroupTitle from "@/components/GroupTitle";
+import {BREAKPOINTS} from "@/style/variables";
 import GameDescription from "@/widgets/itemPage/GameDescription";
 
 const Item = () => {
@@ -53,8 +51,6 @@ const Item = () => {
               />
             </VideoWr>
 
-
-
             <GameDescription
               gameData={data?.itemsCollection.edges[0].node}
             />
@@ -92,6 +88,10 @@ const VideoWr = styled.div`
     top: 0;
     left: 0;
     z-index: 3;
+  }
+  @media ${BREAKPOINTS.laptop} {
+    width: 100%;
+    height: auto;
   }
 `
 
