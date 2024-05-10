@@ -13,7 +13,6 @@ const Account = () => {
 
   const { userMetaData, userError} = useSession()
 
-
   const {data, loading, error} = useQuery(GET_ACCOUNT, {
     variables: {slug: id}
   })

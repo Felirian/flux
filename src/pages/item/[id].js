@@ -1,6 +1,6 @@
 import React from 'react';
 import {useRouter} from "next/router";
-import {GET_ITEM} from "@/supabase/services";
+import {GET_ITEM, useSession} from "@/supabase/services";
 import Head from "next/head";
 import {H1} from "@/style/TextTags";
 import {useQuery} from "@apollo/client";
@@ -15,7 +15,6 @@ const Item = () => {
   const {data, loading, error} = useQuery(GET_ITEM, {
     variables: {slug: id}
   })
-
 
 
   return (
@@ -58,7 +57,6 @@ const Item = () => {
           </ItemWrapper>
         )
       }
-      {/*<button onClick={() => addItemInBasket(itemData?.id, 'c7b1d1e6-377f-4243-bd60-e731e811b122')}>ADD</button>*/}
     </>
   );
 };

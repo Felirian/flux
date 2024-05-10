@@ -4,8 +4,11 @@ import {H1} from "@/style/TextTags";
 import Markdown from "react-markdown";
 import GroupTitle from "@/components/GroupTitle";
 import {BREAKPOINTS, COLOR} from "@/style/variables";
+import {addItemInBasket, useSession} from "@/supabase/services";
 
 const GameDescription = ({gameData}) => {
+
+  const {userId, userMetaData, userError} = useSession()
 
   return (
     <Wrapper>
@@ -26,6 +29,11 @@ const GameDescription = ({gameData}) => {
           src={`https://cdn.cloudflare.steamstatic.com/steam/apps/${gameData.steamId}/logo.png`}
           alt={`logo_${gameData.name}`}
         />
+        {userId &&
+          <button onClick={() => addItemInBasket(gameData.id, userId)}>ADD</button>
+        }
+
+
       </GameTitle>
     </Wrapper>
   );
@@ -34,7 +42,7 @@ const GameDescription = ({gameData}) => {
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  
+
   margin-top: -200px;
 
   //padding-top: 400px;

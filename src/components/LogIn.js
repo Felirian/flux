@@ -1,9 +1,9 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Input} from "@/style/StyledComponents";
 import {LiveBorders} from "@/components/LiveBorders";
 import {AuthWrapper, ButtonChange, ButtonSubmit, ButtonsGroups} from "@/pages/account/auth";
 import styled from "styled-components";
-import supabase from "@/supabase/services";
+import supabase, {useSession} from "@/supabase/services";
 import {useRouter} from "next/router";
 import {H1} from "@/style/TextTags";
 
@@ -15,32 +15,37 @@ export const LogIn = ({changeLogin}) => {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
+  const {userMetaData, userError} = useSession()
+
+  useEffect(() => {
+    if (userMetaData) {
+      router.push(`/account/${userMetaData.slug}`);
+    }
+  }, [userMetaData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      let { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+      let {data: signInData, error: signInError} = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password
       })
 
-      if (signInError) {
-        throw signInError
-      }
-      if (typeof window !== 'undefined') {
-        router.push(`/account/felirian`);
-      }
     } catch (error) {
       console.error('Ошибка при входе', error.message);
     }
+
+
+    window.location.reload();
+
 
   };
   return (
@@ -74,7 +79,7 @@ export const LogIn = ({changeLogin}) => {
 
       <ButtonsGroups>
 
-        <ButtonChange onClick={()=> changeLogin()}>
+        <ButtonChange onClick={() => changeLogin()}>
           <p className={'t3'}>ЗАРЕГИСТРИРОВАТЬСЯ</p>
         </ButtonChange>
         <ButtonSubmit type={'submit'} form={'LoginForm'}>
@@ -86,9 +91,9 @@ export const LogIn = ({changeLogin}) => {
   );
 };
 const LoginForm = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  align-self: stretch;
 `

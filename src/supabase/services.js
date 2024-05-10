@@ -7,8 +7,6 @@ const supabase_key = process.env.NEXT_PUBLIC_DB_SERVICE_KEY
 const supabase_url = process.env.NEXT_PUBLIC_DB_URL
 const supabase = createClient(supabase_url, supabase_key);
 
-const steamApiKey = 'E50AB7E5A1FCCF19F0EA71DBFF190B51'
-const gameId = '413150'
 //--------------------------------FETCH--------------------------------\\
 export const client = new ApolloClient({
   uri: supabase_url + '/graphql/v1',
@@ -55,7 +53,6 @@ export const useSession = () => {
         }))
       }
     };
-
 
     fetchSession();
   }, []);
@@ -142,7 +139,8 @@ query ($slug: String) {
     slug: { eq: $slug }
   }) {
     edges {
-      node {        
+      node {  
+        id      
         name
         video
         
