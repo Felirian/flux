@@ -29,7 +29,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta charSet="UTF-8"/>
-
+          <meta name="yandex-verification" content="491c4f8021ab2254"/>
           <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
           <meta
             name="description"
