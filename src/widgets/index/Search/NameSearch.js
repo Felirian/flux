@@ -18,7 +18,7 @@ const NameSearch = ({setGlobalSearch}) => {
     const handleKeyDown = (event) => {
       if (event.key === 'Enter') {
         setGlobalSearch(inputSearch)
-        console.log(inputSearch);
+        //console.log(inputSearch);
       }
     };
 

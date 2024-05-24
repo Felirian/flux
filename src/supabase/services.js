@@ -199,17 +199,7 @@ query ($name: String) {
         id
       }
     }
-  }
-  items_tagsCollection {
-    edges {
-      node {
-        tags {
-          name
-          id
-        }
-      }
-    }
-  }
+  }  
   itemsCollection (
     orderBy: {created_at: AscNullsFirst},
     filter: {name: {iregex: $name}}
@@ -228,6 +218,7 @@ query ($name: String) {
           edges {
             node {
               tags {
+                id
                 name
               }
             }
