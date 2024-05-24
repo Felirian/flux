@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useQuery} from "@apollo/client";
 import {GET_NAMES_SEARCH} from "@/supabase/services";
 import {Input} from "@/style/StyledComponents";
@@ -8,11 +8,31 @@ import styled from "styled-components";
 import Link from "next/link";
 
 const NameSearch = ({setGlobalSearch}) => {
-
+  const inputRef = useRef(null);
   const [inputSearch, setInputSearch] = useState('')
   const {loading: textLoad, error: textError, data: dataText} = useQuery(GET_NAMES_SEARCH, {
     variables: {name: inputSearch === '' ? null : inputSearch}
   });
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Enter') {
+        setGlobalSearch(inputSearch)
+        console.log(inputSearch);
+      }
+    };
+
+    const inputElement = inputRef.current;
+    if (inputElement) {
+      inputElement.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      if (inputElement) {
+        inputElement.removeEventListener('keydown', handleKeyDown);
+      }
+    };
+  }, [inputSearch]);
 
   const onChangeSearch = (e) => {
     const inputValue = e.target.value;
@@ -26,6 +46,7 @@ const NameSearch = ({setGlobalSearch}) => {
   return (
     <>
       <Input
+        ref={inputRef}
         type="text"
         onChange={onChangeSearch}
         placeholder="Поиск игр..."

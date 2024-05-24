@@ -10,7 +10,7 @@ import NameSearch from "@/widgets/index/Search/NameSearch";
 const SearchWidget = () => {
   const [globalSearch, setGlobalSearch] = useState('')
   const {data, error, loading} = useQuery(GET_ITEMS_SEARCH, {
-    //variables: {name : globalSearch}
+    variables: {name : globalSearch}
   })
 
   return (

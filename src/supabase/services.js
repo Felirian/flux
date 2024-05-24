@@ -133,6 +133,28 @@ query ($slug: String) {
   }
 }
 `;
+export const GET_TAGS = gql`
+query {
+  tagsCollection {
+    edges {
+      node {
+        name
+        id
+      }
+    }
+  }
+  items_tagsCollection {
+    edges {
+      node {
+        tags {
+          name
+          id
+        }
+      }
+    }
+  }
+}
+`;
 export const GET_ITEM = gql`
 query ($slug: String) {  
   itemsCollection (filter: {
@@ -169,7 +191,25 @@ query ($slug: String) {
 }
 `;
 export const GET_ITEMS_SEARCH = gql`
-query {
+query ($name: String) {
+  tagsCollection {
+    edges {
+      node {
+        name
+        id
+      }
+    }
+  }
+  items_tagsCollection {
+    edges {
+      node {
+        tags {
+          name
+          id
+        }
+      }
+    }
+  }
   itemsCollection (
     orderBy: {created_at: AscNullsFirst},
     filter: {name: {iregex: $name}}
