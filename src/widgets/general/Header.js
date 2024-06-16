@@ -76,7 +76,7 @@ export const Header = () => {
 
           <LiveBorders>
             <MenuGroup>
-              <Link href={HEADER_LINKS[1][0] + HEADER_LINKS[1][1][1].ref} >
+              <Link href={HEADER_LINKS[1][0] + HEADER_LINKS[1][1][1].ref} onClick={() => (setOpen(false))}>
                 <SvgSelector svg={HEADER_LINKS[1][1][1].svg}/>
                 {/*<H4 style={{transitionDelay: `${i/10}s`}}>{link.name}</H4>*/}
               </Link>
@@ -91,7 +91,7 @@ export const Header = () => {
               <MenuGroup key={`header_group_${index}`} open={open}>
                 {group[1].map((link, i)=>(
                   <LiveBorders key={i} width={'100%'}>
-                    <Link href={group[0] + link.ref} >
+                    <Link href={group[0] + link.ref} onClick={() => (setOpen(false))}>
                       <SvgSelector svg={link.svg}/>
                       <H4 style={{transitionDelay: `${i/10}s`}}>{link.name}</H4>
                     </Link>
@@ -157,7 +157,8 @@ const HeaderWrapper = styled.header`
   @media ${BREAKPOINTS.mobile} {
     padding-top: 11.11vw;
     width: 50vw;
-    height: 100%;
+    height: 100lvh;
+    padding-bottom: 8vh;
     z-index: -1;
     left: ${(props) => props.open ? 0 : -50}vw;
   }
