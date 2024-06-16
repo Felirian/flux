@@ -18,10 +18,8 @@ const SearchWidget = () => {
 
   const touchFilter = (id) => {
     if (filters.includes(id)) {
-      // Если элемент уже есть в массиве, удаляем его
       setFilters(filters.filter(filterId => filterId !== id));
     } else {
-      // Если элемента нет в массиве, добавляем его
       setFilters([...filters, id]);
     }
   }
